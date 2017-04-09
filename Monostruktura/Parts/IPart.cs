@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using System.Numerics;
-using x09_Struktura.Paletter;
+using Monostruktura.Paletter;
 
-namespace x09_Struktura.Parts
+namespace Monostruktura.Parts
 {
     public interface IPart
     {

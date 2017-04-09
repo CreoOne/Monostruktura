@@ -7,8 +7,8 @@
     <ProjectGuid>{3EA5152F-532B-4775-9CE4-8D7471F09489}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>x09_Struktura</RootNamespace>
-    <AssemblyName>x09_Struktura</AssemblyName>
+    <RootNamespace>Monostruktura</RootNamespace>
+    <AssemblyName>Monostruktura</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

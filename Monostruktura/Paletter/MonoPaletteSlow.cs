@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Numerics;
 
-namespace x09_Struktura.Paletter
+namespace Monostruktura.Paletter
 {
     public class MonoPaletteSlow : IPaletteProvider
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace x09_Struktura.Paletter
+namespace Monostruktura.Paletter
 {
     public interface IPaletteProvider
     {

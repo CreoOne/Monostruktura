@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Numerics;
 
-namespace x09_Struktura
+namespace Monostruktura
 {
     public static class Vector2ToPointF
     {

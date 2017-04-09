@@ -1,4 +1,4 @@
-﻿namespace x09_Struktura
+﻿namespace Monostruktura
 {
     partial class StrukturaMainForm
     {

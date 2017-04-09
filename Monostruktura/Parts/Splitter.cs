@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using x09_Struktura.Paletter;
-using x09_Struktura.PartsFactory;
+using Monostruktura.Paletter;
+using Monostruktura.PartsFactory;
 
-namespace x09_Struktura.Parts
+namespace Monostruktura.Parts
 {
     public class Splitter : PartAbstract
     {

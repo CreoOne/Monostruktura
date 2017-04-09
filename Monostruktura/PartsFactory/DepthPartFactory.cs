@@ -1,8 +1,8 @@
 ﻿using System;
-using x09_Struktura.Paletter;
-using x09_Struktura.Parts;
+using Monostruktura.Paletter;
+using Monostruktura.Parts;
 
-namespace x09_Struktura.PartsFactory
+namespace Monostruktura.PartsFactory
 {
     public class DepthPartFactory : IPartFactory
     {

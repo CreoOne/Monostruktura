@@ -4,11 +4,11 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Numerics;
 using System.Windows.Forms;
-using x09_Struktura.Paletter;
-using x09_Struktura.Parts;
-using x09_Struktura.PartsFactory;
+using Monostruktura.Paletter;
+using Monostruktura.Parts;
+using Monostruktura.PartsFactory;
 
-namespace x09_Struktura
+namespace Monostruktura
 {
     public partial class StrukturaMainForm : Form
     {
