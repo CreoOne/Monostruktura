@@ -30,12 +30,15 @@ namespace Monostruktura
             bRegenerate_Click(sender, e);
         }
 
-        private void bRegenerate_Click(object sender, EventArgs e)
+        private void RegenerateStructure()
         {
             IPaletteProvider palette = new MonoPaletteSlow(Rand, Color.Black);
             Core = new DepthPartFactory(6).Create(Rand, null, palette);
             Text = Core.Cost.ToString();
+        }
 
+        private void RedrawStructure()
+        {
             Bitmap image = new Bitmap(960, 540);
 
             using (Graphics context = Graphics.FromImage(image))
@@ -53,6 +56,12 @@ namespace Monostruktura
                 pMain.Image.Dispose();
 
             pMain.Image = image;
+        }
+
+        private void bRegenerate_Click(object sender, EventArgs e)
+        {
+            RegenerateStructure();
+            RedrawStructure();
         }
 
         private void bSave_Click(object sender, EventArgs e)
