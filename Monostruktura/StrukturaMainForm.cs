@@ -70,9 +70,22 @@ namespace Monostruktura
             {
                 sfd.CheckFileExists = false;
                 sfd.CheckPathExists = false;
+                sfd.OverwritePrompt = true;
+                sfd.Filter = "JPEG Image|*.jpeg|PNG Image|*.png";
 
                 if (sfd.ShowDialog() == DialogResult.OK)
-                    pMain.Image.Save(sfd.FileName, ImageFormat.Jpeg);
+                {
+                    ImageFormat imageFormat;
+
+                    switch(sfd.FilterIndex)
+                    {
+                        default:
+                        case 1: imageFormat = ImageFormat.Jpeg; break;
+                        case 2: imageFormat = ImageFormat.Png; break;
+                    }
+
+                    pMain.Image.Save(sfd.FileName, imageFormat);
+                }
             }
         }
     }
