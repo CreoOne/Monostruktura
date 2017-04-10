@@ -31,7 +31,12 @@
             this.pMain = new System.Windows.Forms.PictureBox();
             this.bRegenerate = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
+            this.nWidth = new System.Windows.Forms.NumericUpDown();
+            this.nHeight = new System.Windows.Forms.NumericUpDown();
+            this.bRedraw = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // pMain
@@ -65,11 +70,68 @@
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
+            // nWidth
+            // 
+            this.nWidth.Location = new System.Drawing.Point(281, 15);
+            this.nWidth.Maximum = new decimal(new int[] {
+            32000,
+            0,
+            0,
+            0});
+            this.nWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nWidth.Name = "nWidth";
+            this.nWidth.Size = new System.Drawing.Size(86, 20);
+            this.nWidth.TabIndex = 3;
+            this.nWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nHeight
+            // 
+            this.nHeight.Location = new System.Drawing.Point(373, 15);
+            this.nHeight.Maximum = new decimal(new int[] {
+            32000,
+            0,
+            0,
+            0});
+            this.nHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nHeight.Name = "nHeight";
+            this.nHeight.Size = new System.Drawing.Size(86, 20);
+            this.nHeight.TabIndex = 4;
+            this.nHeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // bRedraw
+            // 
+            this.bRedraw.Location = new System.Drawing.Point(465, 12);
+            this.bRedraw.Name = "bRedraw";
+            this.bRedraw.Size = new System.Drawing.Size(75, 23);
+            this.bRedraw.TabIndex = 5;
+            this.bRedraw.Text = "Redraw";
+            this.bRedraw.UseVisualStyleBackColor = true;
+            this.bRedraw.Click += new System.EventHandler(this.bRedraw_Click);
+            // 
             // StrukturaMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 518);
+            this.Controls.Add(this.bRedraw);
+            this.Controls.Add(this.nHeight);
+            this.Controls.Add(this.nWidth);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.bRegenerate);
             this.Controls.Add(this.pMain);
@@ -77,6 +139,8 @@
             this.Load += new System.EventHandler(this.StrukturaMainForm_Load);
             this.Shown += new System.EventHandler(this.StrukturaMainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,5 +150,8 @@
         private System.Windows.Forms.PictureBox pMain;
         private System.Windows.Forms.Button bRegenerate;
         private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.NumericUpDown nWidth;
+        private System.Windows.Forms.NumericUpDown nHeight;
+        private System.Windows.Forms.Button bRedraw;
     }
 }

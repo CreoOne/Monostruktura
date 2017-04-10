@@ -14,15 +14,19 @@ namespace Monostruktura
     {
         private IPart Core;
         private Random Rand;
+        private Size CanvasSize;
 
         public StrukturaMainForm()
         {
             InitializeComponent();
+            CanvasSize = new Size(960, 540);
         }
 
         private void StrukturaMainForm_Load(object sender, EventArgs e)
         {
             Rand = new Random((int)((DateTime.Now - DateTime.MinValue).TotalMilliseconds % int.MaxValue));
+            nWidth.Value = CanvasSize.Width;
+            nHeight.Value = CanvasSize.Height;
         }
 
         private void StrukturaMainForm_Shown(object sender, EventArgs e)
@@ -39,7 +43,7 @@ namespace Monostruktura
 
         private void RedrawStructure()
         {
-            Bitmap image = new Bitmap(960, 540);
+            Bitmap image = new Bitmap(CanvasSize.Width, CanvasSize.Height);
 
             using (Graphics context = Graphics.FromImage(image))
             {
@@ -87,6 +91,12 @@ namespace Monostruktura
                     pMain.Image.Save(sfd.FileName, imageFormat);
                 }
             }
+        }
+
+        private void bRedraw_Click(object sender, EventArgs e)
+        {
+            CanvasSize = new Size((int)nWidth.Value, (int)nHeight.Value);
+            RedrawStructure();
         }
     }
 }
