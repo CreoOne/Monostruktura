@@ -12,7 +12,7 @@ namespace Monostruktura.Parts
         {
             get
             {
-                double area = (2 * Math.PI * Radius) * Width;
+                double area = (2 * Math.PI * Radius) * Width * ((ClosingAngle - OpeningAngle) / 360);
                 double selfCost = area / 10f * (Negative ? -1 : 1);
                 return Child != null ? Child.Cost + selfCost : selfCost;
             }
@@ -59,7 +59,7 @@ namespace Monostruktura.Parts
             using (Pen pen = new Pen(BaseColor))
             {
                 pen.Width = Width;
-                context.DrawArc(pen, destination.X, destination.Y, Radius * 2, Radius * 2, OpeningAngle, ClosingAngle);
+                context.DrawArc(pen, destination.X, destination.Y, Radius * 2, Radius * 2, OpeningAngle, OpeningAngle + ClosingAngle);
             }
 
             if (Child != null)
