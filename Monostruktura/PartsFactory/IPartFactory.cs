@@ -6,6 +6,8 @@ namespace Monostruktura.PartsFactory
 {
     public interface IPartFactory
     {
-        IPart Create(Random rand, IPart parent, IPaletteProvider palette);
+        Random Rand { get; }
+        IPaletteProvider Palette { get; }
+        IPart Create(IPart parent);
     }
 }

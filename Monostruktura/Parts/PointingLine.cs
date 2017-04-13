@@ -26,27 +26,27 @@ namespace Monostruktura.Parts
 
         public IPart Child { get; private set; }
 
-        public PointingLine(IPartFactory factory, Random rand, IPart parent, IPaletteProvider palette)
+        public PointingLine(IPartFactory factory, IPart parent)
         {
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Direction = (float)(rand.NextDouble() - 0.5f) * 0.47f;
-            Length = rand.Next(3, 100);
-            Width = rand.Next(1, 4);
-            Negative = rand.Next(0, 3) == 0;
+            Direction = (float)(factory.Rand.NextDouble() - 0.5f) * 0.47f;
+            Length = factory.Rand.Next(3, 100);
+            Width = factory.Rand.Next(1, 4);
+            Negative = factory.Rand.Next(0, 3) == 0;
 
             if (Width == 3 && Length <= 4)
-                BaseColor = palette.GetMaxForeground();
+                BaseColor = factory.Palette.GetMaxForeground();
 
             else if (Width == 1 && Length > 60)
-                BaseColor = palette.GetSupportForeground();
+                BaseColor = factory.Palette.GetSupportForeground();
 
             else
-                BaseColor = Negative ? palette.Background : palette.GetNextForeground();
+                BaseColor = Negative ? factory.Palette.Background : factory.Palette.GetNextForeground();
 
             Parent = parent;
-            Child = factory.Create(rand, this, palette);
+            Child = factory.Create(this);
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)

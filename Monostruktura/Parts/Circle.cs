@@ -28,28 +28,28 @@ namespace Monostruktura.Parts
 
         public IPart Child { get; private set; }
 
-        public Circle(IPartFactory factory, Random rand, IPart parent, IPaletteProvider palette)
+        public Circle(IPartFactory factory, IPart parent)
         {
-            Negative = rand.Next(0, 3) == 0;
-            Width = rand.Next(1, 4);
-            Radius = rand.Next(3, 80);
+            Negative = factory.Rand.Next(0, 3) == 0;
+            Width = factory.Rand.Next(1, 4);
+            Radius = factory.Rand.Next(3, 80);
 
             if (Radius <= 4 && Width >= 3)
-                BaseColor = palette.GetMaxForeground();
+                BaseColor = factory.Palette.GetMaxForeground();
 
             else if (Radius >= 60 && Width == 1)
-                BaseColor = palette.GetSupportForeground();
+                BaseColor = factory.Palette.GetSupportForeground();
 
             else
-                BaseColor = Negative ? palette.Background : palette.GetNextForeground();
+                BaseColor = Negative ? factory.Palette.Background : factory.Palette.GetNextForeground();
 
-            Offset = new Vector2(rand.Next(-20, 40), rand.Next(-20, 40));
+            Offset = new Vector2(factory.Rand.Next(-20, 40), factory.Rand.Next(-20, 40));
 
-            OpeningAngle = rand.Next(0, 360);
-            ClosingAngle = rand.Next(0, 360);
+            OpeningAngle = factory.Rand.Next(0, 360);
+            ClosingAngle = factory.Rand.Next(0, 360);
 
             Parent = parent;
-            Child = factory.Create(rand, this, palette);
+            Child = factory.Create(this);
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)

@@ -16,14 +16,14 @@ namespace Monostruktura.Parts
 
         public List<IPart> Childs { get; private set; }
 
-        public Splitter(IPartFactory factory, Random rand, IPart parent, IPaletteProvider palette)
+        public Splitter(IPartFactory factory, IPart parent)
         {
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
             Parent = parent;
 
-            Childs = Enumerable.Range(0, rand.Next(2, 8)).Select(c => factory.Create(rand, this, palette.Clone())).ToList();
+            Childs = Enumerable.Range(0, factory.Rand.Next(2, 8)).Select(c => factory.Create(this)).ToList();
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)

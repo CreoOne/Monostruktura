@@ -15,15 +15,15 @@ namespace Monostruktura.Parts
 
         public IPart Child { get; private set; }
 
-        public Rotor(IPartFactory factory, Random rand, IPart parent, IPaletteProvider palette)
+        public Rotor(IPartFactory factory, IPart parent)
         {
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Count = rand.Next(2, 7);
+            Count = factory.Rand.Next(2, 7);
 
             Parent = parent;
-            Child = factory.Create(rand, this, palette);
+            Child = factory.Create(this);
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)

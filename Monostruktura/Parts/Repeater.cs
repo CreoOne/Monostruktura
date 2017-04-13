@@ -17,17 +17,17 @@ namespace Monostruktura.Parts
 
         public IPart Child { get; private set; }
 
-        public Repeater(IPartFactory factory, Random rand, IPart parent, IPaletteProvider palette)
+        public Repeater(IPartFactory factory, IPart parent)
         {
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Count = rand.Next(2, 16);
-            Space = rand.Next(10, 80);
-            Direction = (rand.NextDouble() - 0.5f) * 0.5f;
+            Count = factory.Rand.Next(2, 16);
+            Space = factory.Rand.Next(10, 80);
+            Direction = (factory.Rand.NextDouble() - 0.5f) * 0.5f;
 
             Parent = parent;
-            Child = factory.Create(rand, this, palette);
+            Child = factory.Create(this);
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)

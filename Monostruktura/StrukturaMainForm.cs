@@ -39,7 +39,7 @@ namespace Monostruktura
         private void RegenerateStructure()
         {
             IPaletteProvider palette = new MonoPaletteSlow(Rand, Color.Black);
-            Core = new DepthPartFactory(6).Create(Rand, null, palette);
+            Core = new DepthPartFactory(6, Rand, palette).Create(null);
             Text = Core.Cost.ToString();
         }
 

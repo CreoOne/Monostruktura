@@ -8,6 +8,5 @@ namespace Monostruktura.Paletter
         Color GetMaxForeground();
         Color GetSupportForeground();
         Color Background { get; }
-        IPaletteProvider Clone();
     }
 }
