@@ -21,9 +21,7 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Count = factory.Rand.Next(2, 16);
-            Space = factory.Rand.Next(10, 80);
-            Direction = (factory.Rand.NextDouble() - 0.5f) * 0.5f;
+            Randomize(factory.Rand);
 
             Parent = parent;
             Child = factory.Create(this);
@@ -39,6 +37,13 @@ namespace Monostruktura.Parts
                 if (Child != null)
                     Child.Draw(context, position + sign * offset * Space, direction);
             }
+        }
+
+        public override void Randomize(Random rand)
+        {
+            Count = rand.Next(2, 16);
+            Space = rand.Next(10, 80);
+            Direction = (rand.NextDouble() - 0.5f) * 0.5f;
         }
     }
 }

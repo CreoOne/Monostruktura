@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using System.Numerics;
-using Monostruktura.Paletter;
+using System;
 
 namespace Monostruktura.Parts
 {
@@ -11,5 +11,6 @@ namespace Monostruktura.Parts
 
         public abstract double Cost { get; }
         public abstract void Draw(Graphics context, Vector2 position, float direction);
+        public abstract void Randomize(Random rand);
     }
 }

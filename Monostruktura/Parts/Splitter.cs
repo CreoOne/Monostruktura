@@ -20,6 +20,8 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
+            Randomize(factory.Rand);
+
             Parent = parent;
 
             Childs = Enumerable.Range(0, factory.Rand.Next(2, 8)).Select(c => factory.Create(this)).ToList();
@@ -32,6 +34,11 @@ namespace Monostruktura.Parts
             foreach (int index in Enumerable.Range(0, Childs.Count))
                 if(Childs[index] != null)
                     Childs[index].Draw(context, position, direction - (float)Math.PI + offset * index);
+        }
+
+        public override void Randomize(Random rand)
+        {
+            // nothing to do
         }
     }
 }

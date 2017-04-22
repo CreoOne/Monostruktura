@@ -30,10 +30,7 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Direction = (float)(factory.Rand.NextDouble() - 0.5f) * 0.47f;
-            Length = factory.Rand.Next(3, 100);
-            Width = factory.Rand.Next(1, 4);
-            Negative = factory.Rand.Next(0, 3) == 0;
+            Randomize(factory.Rand);
 
             if (Width == 3 && Length <= 4)
                 BaseColor = factory.Palette.GetMaxForeground();
@@ -61,6 +58,14 @@ namespace Monostruktura.Parts
 
             if(Child != null)
                 Child.Draw(context, destination, pointing);
+        }
+
+        public override void Randomize(Random rand)
+        {
+            Direction = (float)(rand.NextDouble() - 0.5f) * 0.47f;
+            Length = rand.Next(3, 100);
+            Width = rand.Next(1, 4);
+            Negative = rand.Next(0, 3) == 0;
         }
     }
 }
