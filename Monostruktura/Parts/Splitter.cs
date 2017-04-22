@@ -11,7 +11,8 @@ namespace Monostruktura.Parts
     {
         public override double Cost { get { return Childs.Sum(c => c != null ? c.Cost : 0); } }
 
-        public List<IPart> Childs { get; private set; }
+        private List<IPart> ChildsInternal { get; set; }
+        public override IEnumerable<IPart> Childs { get { return ChildsInternal; } }
 
         public Splitter(IPartFactory factory, IPart parent)
         {
@@ -20,16 +21,16 @@ namespace Monostruktura.Parts
 
             Parent = parent;
 
-            Childs = Enumerable.Range(0, factory.Rand.Next(2, 8)).Select(c => factory.Create(this)).ToList();
+            ChildsInternal = Enumerable.Range(0, factory.Rand.Next(2, 8)).Select(c => factory.Create(this)).ToList();
         }
 
         public override void Draw(Graphics context, Vector2 position, float direction)
         {
-            float offset = (float)Math.PI / Childs.Count;
+            float offset = (float)Math.PI / ChildsInternal.Count;
 
-            foreach (int index in Enumerable.Range(0, Childs.Count))
-                if(Childs[index] != null)
-                    Childs[index].Draw(context, position, direction - (float)Math.PI + offset * index);
+            foreach (int index in Enumerable.Range(0, ChildsInternal.Count))
+                if(ChildsInternal[index] != null)
+                    ChildsInternal[index].Draw(context, position, direction - (float)Math.PI + offset * index);
         }
 
         public override void Randomize(Random rand)

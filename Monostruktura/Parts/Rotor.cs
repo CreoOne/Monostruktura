@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using Monostruktura.PartsFactory;
+using System.Collections.Generic;
 
 namespace Monostruktura.Parts
 {
@@ -12,7 +13,8 @@ namespace Monostruktura.Parts
 
         public int Count { get; private set; }
 
-        public IPart Child { get; private set; }
+        private IPart Child { get; set; }
+        public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public Rotor(IPartFactory factory, IPart parent)
         {

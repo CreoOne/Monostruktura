@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using Monostruktura.PartsFactory;
@@ -23,7 +24,8 @@ namespace Monostruktura.Parts
         public bool Negative { get; private set; }
         public Color BaseColor { get; private set; }
 
-        public IPart Child { get; private set; }
+        private IPart Child { get; set; }
+        public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public PointingLine(IPartFactory factory, IPart parent)
         {

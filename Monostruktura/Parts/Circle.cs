@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Numerics;
 using Monostruktura.PartsFactory;
+using System.Collections.Generic;
 
 namespace Monostruktura.Parts
 {
@@ -25,7 +26,8 @@ namespace Monostruktura.Parts
         public int OpeningAngle { get; private set; }
         public int ClosingAngle { get; private set; }
 
-        public IPart Child { get; private set; }
+        private IPart Child { get; set; }
+        public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public Circle(IPartFactory factory, IPart parent)
         {
