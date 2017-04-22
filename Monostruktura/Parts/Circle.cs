@@ -29,9 +29,7 @@ namespace Monostruktura.Parts
 
         public Circle(IPartFactory factory, IPart parent)
         {
-            Negative = factory.Rand.Next(0, 3) == 0;
-            Width = factory.Rand.Next(1, 4);
-            Radius = factory.Rand.Next(3, 80);
+            Randomize(factory.Rand);
 
             if (Radius <= 4 && Width >= 3)
                 BaseColor = factory.Palette.GetMaxForeground();
@@ -41,11 +39,6 @@ namespace Monostruktura.Parts
 
             else
                 BaseColor = Negative ? factory.Palette.Background : factory.Palette.GetNextForeground();
-
-            Offset = new Vector2(factory.Rand.Next(-20, 40), factory.Rand.Next(-20, 40));
-
-            OpeningAngle = factory.Rand.Next(0, 360);
-            ClosingAngle = factory.Rand.Next(0, 360);
 
             Parent = parent;
             Child = factory.Create(this);
@@ -63,6 +56,18 @@ namespace Monostruktura.Parts
 
             if (Child != null)
                 Child.Draw(context, destination, direction);
+        }
+
+        public override void Randomize(Random rand)
+        {
+            Negative = rand.Next(0, 3) == 0;
+            Width = rand.Next(1, 4);
+            Radius = rand.Next(3, 80);
+
+            Offset = new Vector2(rand.Next(-20, 40), rand.Next(-20, 40));
+
+            OpeningAngle = rand.Next(0, 360);
+            ClosingAngle = rand.Next(0, 360);
         }
     }
 }
