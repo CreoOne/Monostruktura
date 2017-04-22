@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Paletter\IPaletteProvider.cs" />
     <Compile Include="Paletter\MonoPaletteSlow.cs" />
+    <Compile Include="PartPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel.Designer.cs">
+      <DependentUpon>PartPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartsFactory\RandomizedDepthPartFactory.cs" />
     <Compile Include="Parts\Circle.cs" />
     <Compile Include="Parts\IPart.cs" />
@@ -71,6 +77,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="PartPanel.resx">
+      <DependentUpon>PartPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StrukturaMainForm.resx">
       <DependentUpon>StrukturaMainForm.cs</DependentUpon>
     </EmbeddedResource>
