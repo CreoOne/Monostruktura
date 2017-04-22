@@ -26,7 +26,7 @@ namespace Monostruktura.PartsFactory
             Palette = palette;
         }
 
-        public IPart Create(IPart parent)
+        public virtual IPart Create(IPart parent)
         {
             if (parent != null && parent.Depth > Depth)
             {

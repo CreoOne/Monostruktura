@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Paletter\IPaletteProvider.cs" />
     <Compile Include="Paletter\MonoPaletteSlow.cs" />
+    <Compile Include="PartsFactory\RandomizedDepthPartFactory.cs" />
     <Compile Include="Parts\Circle.cs" />
     <Compile Include="Parts\IPart.cs" />
     <Compile Include="PartsFactory\IPartFactory.cs" />

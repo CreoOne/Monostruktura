@@ -29,8 +29,6 @@ namespace Monostruktura.Parts
 
         public Circle(IPartFactory factory, IPart parent)
         {
-            Randomize(factory.Rand);
-
             if (Radius <= 4 && Width >= 3)
                 BaseColor = factory.Palette.GetMaxForeground();
 

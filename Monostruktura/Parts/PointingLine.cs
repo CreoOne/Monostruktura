@@ -30,8 +30,6 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Randomize(factory.Rand);
-
             if (Width == 3 && Length <= 4)
                 BaseColor = factory.Palette.GetMaxForeground();
 

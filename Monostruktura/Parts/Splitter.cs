@@ -20,8 +20,6 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Randomize(factory.Rand);
-
             Parent = parent;
 
             Childs = Enumerable.Range(0, factory.Rand.Next(2, 8)).Select(c => factory.Create(this)).ToList();

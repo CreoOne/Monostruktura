@@ -19,8 +19,6 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            Randomize(factory.Rand);
-
             Parent = parent;
             Child = factory.Create(this);
         }
