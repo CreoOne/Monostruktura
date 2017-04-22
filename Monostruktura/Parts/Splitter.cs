@@ -11,8 +11,6 @@ namespace Monostruktura.Parts
     {
         public override double Cost { get { return Childs.Sum(c => c != null ? c.Cost : 0); } }
 
-        public int Divider { get; private set; }
-
         public List<IPart> Childs { get; private set; }
 
         public Splitter(IPartFactory factory, IPart parent)
