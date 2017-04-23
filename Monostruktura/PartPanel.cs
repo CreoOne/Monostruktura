@@ -21,7 +21,7 @@ namespace Monostruktura
             InitializeComponent();
         }
 
-        public PartPanel(IPart part) : this()
+        public void SetPart(IPart part)
         {
             Part = part;
 
@@ -31,7 +31,7 @@ namespace Monostruktura
             bParent.Enabled = Part.Parent != null;
         }
 
-        public PartPanel(IPart part, IPart core) : this(part)
+        public void SetCore(IPart core)
         {
             Core = core;
 
