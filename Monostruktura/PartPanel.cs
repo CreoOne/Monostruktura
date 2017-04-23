@@ -21,11 +21,11 @@ namespace Monostruktura
             Part = part;
             UpdateControlsEnable();
             UpdateChildsControls();
+            pControls.Controls.Clear();
 
             if (Part == null)
             {
                 lName.Text = string.Empty;
-                pControls.Controls.Clear();
                 return;
             }
 
