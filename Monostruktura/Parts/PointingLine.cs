@@ -27,7 +27,7 @@ namespace Monostruktura.Parts
         public Color BaseColor { get; private set; }
 
         private IPart Child { get; set; }
-        public override IEnumerable<IPart> Childs { get { yield return Child; } }
+        public override IEnumerable<IPart> Childs { get { if(Child != null) yield return Child; } }
 
         public PointingLine(IPartFactory factory, IPart parent)
         {

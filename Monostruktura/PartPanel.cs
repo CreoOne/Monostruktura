@@ -80,6 +80,9 @@ namespace Monostruktura
             {
                 IPart child = Part.Childs.ElementAt(childIndex);
 
+                if (child == null)
+                    continue;
+
                 Button btn = new Button();
                 btn.Name = "bChild" + childIndex;
                 btn.Text = "Child " + childIndex + ": " + child.GetType().Name;

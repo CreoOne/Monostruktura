@@ -27,7 +27,7 @@ namespace Monostruktura.Parts
         public int ClosingAngle { get; private set; }
 
         private IPart Child { get; set; }
-        public override IEnumerable<IPart> Childs { get { yield return Child; } }
+        public override IEnumerable<IPart> Childs { get { if(Child != null) yield return Child; } }
 
         public Circle(IPartFactory factory, IPart parent)
         {
