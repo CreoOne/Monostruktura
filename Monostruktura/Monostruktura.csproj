@@ -59,6 +59,12 @@
     <Compile Include="Panels\RepeaterPanel.Designer.cs">
       <DependentUpon>RepeaterPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\SplitterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\SplitterPanel.Designer.cs">
+      <DependentUpon>SplitterPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\RotorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\RepeaterPanel.resx">
       <DependentUpon>RepeaterPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\SplitterPanel.resx">
+      <DependentUpon>SplitterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\RotorPanel.resx">
       <DependentUpon>RotorPanel.cs</DependentUpon>

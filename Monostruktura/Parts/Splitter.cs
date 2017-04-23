@@ -30,16 +30,29 @@ namespace Monostruktura.Parts
 
         public override Control CreatePanel()
         {
-            return null;
+            return new Panels.SplitterPanel(this);
         }
 
         public override void SetChild(IPart child, int slot)
         {
-            if (slot < 0 && slot >= ChildsInternal.Count)
+            if (slot < 0 && slot >= ChildsInternal.Count - 1)
                 throw new ArgumentOutOfRangeException("slot");
 
             ChildsInternal[slot] = child;
-            ChildsInternal[slot].Parent = this;
+
+            if(child != null)
+                child.Parent = this;
+        }
+
+        public void AddSlot()
+        {
+            ChildsInternal.Add(null);
+        }
+
+        public void RemoveSlot()
+        {
+            if(ChildsInternal.Count > 1)
+                ChildsInternal = ChildsInternal.Take(ChildsInternal.Count - 1).ToList();
         }
     }
 }
