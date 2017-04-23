@@ -48,7 +48,7 @@ namespace Monostruktura.PartsFactory
                 }
             }
 
-            while (parent != null && result.GetType() == parent.GetType());
+            while (parent != null && result.GetType().Equals(parent.GetType()));
 
             return result;
         }

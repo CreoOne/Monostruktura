@@ -37,7 +37,7 @@ namespace Monostruktura
 
         private void RegenerateStructure()
         {
-            Core = new RandomizedDepthPartFactory(4, Rand).Create(null);
+            Core = new RandomizedDepthPartFactory(5, Rand).Create(null);
             Text = Core.Cost.ToString();
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);

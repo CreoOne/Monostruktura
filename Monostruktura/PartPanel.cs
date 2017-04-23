@@ -67,16 +67,17 @@ namespace Monostruktura
 
         private void UpdateChildsControls()
         {
+            pChilds.Controls.Clear();
+
             if (Part == null)
             {
-                pChilds.Controls.Clear();
                 pChilds.Height = 0;
                 return;
             }
 
             pChilds.Height = 4 + 26 * Part.Childs.Count();
 
-            foreach(int childIndex in Enumerable.Range(0, Part.Childs.Count()))
+            foreach (int childIndex in Enumerable.Range(0, Part.Childs.Count()))
             {
                 IPart child = Part.Childs.ElementAt(childIndex);
 
