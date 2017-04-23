@@ -68,6 +68,7 @@ namespace Monostruktura
 
                 Button btn = new Button();
                 btn.Name = "bChild" + childIndex;
+                btn.Text = "Child " + childIndex;
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
                 btn.Left = 3;
                 btn.Top = 3 + 26 * childIndex;
