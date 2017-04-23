@@ -43,5 +43,13 @@ namespace Monostruktura.Parts
         {
             return null;
         }
+
+        public override void SetChild(IPart child, int slot)
+        {
+            if (slot < 0 && slot >= ChildsInternal.Count)
+                throw new ArgumentOutOfRangeException("slot");
+
+            ChildsInternal[slot] = child;
+        }
     }
 }

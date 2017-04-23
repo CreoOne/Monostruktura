@@ -16,7 +16,7 @@ namespace Monostruktura.Parts
         public int Count { get; set; }
 
         private IPart Child { get; set; }
-        public override IEnumerable<IPart> Childs { get { if (Child != null) yield return Child; } }
+        public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public Rotor(IPartFactory factory, IPart parent)
         {
@@ -46,6 +46,11 @@ namespace Monostruktura.Parts
         public override Control CreatePanel()
         {
             return new RotorPanel(this);
+        }
+
+        public override void SetChild(IPart child, int slot)
+        {
+            Child = child;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Monostruktura.Parts
         public double Direction { get; set; }
 
         private IPart Child { get; set; }
-        public override IEnumerable<IPart> Childs { get { if (Child != null) yield return Child; } }
+        public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public Repeater(IPartFactory factory, IPart parent)
         {
@@ -51,6 +51,11 @@ namespace Monostruktura.Parts
         public override Control CreatePanel()
         {
             return new RepeaterPanel(this);
+        }
+
+        public override void SetChild(IPart child, int slot)
+        {
+            Child = child;
         }
     }
 }

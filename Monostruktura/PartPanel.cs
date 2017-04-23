@@ -81,12 +81,13 @@ namespace Monostruktura
             {
                 IPart child = Part.Childs.ElementAt(childIndex);
 
-                if (child == null)
-                    continue;
-
                 Button btn = new Button();
                 btn.Name = "bChild" + childIndex;
-                btn.Text = "Child " + childIndex + ": " + child.GetType().Name;
+                btn.Enabled = child != null;
+
+                if (child != null)
+                    btn.Text = "Child " + childIndex + ": " + child.GetType().Name;
+
                 btn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
                 btn.Left = 3;
                 btn.Top = 3 + 26 * childIndex;
@@ -95,7 +96,7 @@ namespace Monostruktura
 
                 btn.Click += (sender, eventArgs) =>
                 {
-                    SetPart(Part.Childs.ElementAt(childIndex));
+                    SetPart(child);
                 };
 
                 pChilds.Controls.Add(btn);

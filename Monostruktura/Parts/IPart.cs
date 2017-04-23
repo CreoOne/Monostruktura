@@ -10,8 +10,11 @@ namespace Monostruktura.Parts
     {
         IPart Parent { get; }
         IEnumerable<IPart> Childs { get; }
+        void SetChild(IPart child, int slot);
+
         double Cost { get; }
         int Depth { get; }
+
         void Draw(Graphics context, Vector2 position, float direction);
         void Randomize(Random rand);
         Control CreatePanel();
