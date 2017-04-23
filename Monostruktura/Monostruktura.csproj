@@ -54,6 +54,12 @@
     <Compile Include="Panels\PointingLiniePanel.Designer.cs">
       <DependentUpon>PointingLiniePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\RepeaterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\RepeaterPanel.Designer.cs">
+      <DependentUpon>RepeaterPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\RotorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Panels\PointingLiniePanel.resx">
       <DependentUpon>PointingLiniePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\RepeaterPanel.resx">
+      <DependentUpon>RepeaterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\RotorPanel.resx">
       <DependentUpon>RotorPanel.cs</DependentUpon>

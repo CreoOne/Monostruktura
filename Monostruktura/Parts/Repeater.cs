@@ -5,6 +5,7 @@ using System.Numerics;
 using Monostruktura.PartsFactory;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Monostruktura.Panels;
 
 namespace Monostruktura.Parts
 {
@@ -12,9 +13,9 @@ namespace Monostruktura.Parts
     {
         public override double Cost { get { return Child != null ? Child.Cost * Count : 0; } }
 
-        public int Count { get; private set; }
-        public int Space { get; private set; }
-        public double Direction { get; private set; }
+        public int Count { get; set; }
+        public int Space { get; set; }
+        public double Direction { get; set; }
 
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
@@ -49,7 +50,7 @@ namespace Monostruktura.Parts
 
         public override Control CreatePanel()
         {
-            return null;
+            return new RepeaterPanel(this);
         }
     }
 }
