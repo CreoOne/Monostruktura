@@ -49,6 +49,7 @@
             this.pMain.Location = new System.Drawing.Point(226, 41);
             this.pMain.Name = "pMain";
             this.pMain.Size = new System.Drawing.Size(611, 465);
+            this.pMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pMain.TabIndex = 0;
             this.pMain.TabStop = false;
             // 
@@ -167,6 +168,7 @@
             this.Controls.Add(this.bRegenerate);
             this.Controls.Add(this.pMain);
             this.Name = "StrukturaMainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StrukturaMainForm_Load);
             this.Shown += new System.EventHandler(this.StrukturaMainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).EndInit();
