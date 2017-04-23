@@ -41,6 +41,8 @@ namespace Monostruktura
             IPaletteProvider palette = new MonoPaletteSlow(Rand, Color.Black);
             Core = new RandomizedDepthPartFactory(6, Rand, palette).Create(null);
             Text = Core.Cost.ToString();
+            pPartPanel.SetPart(Core);
+            pPartPanel.SetCore(Core);
         }
 
         private void RedrawStructure()

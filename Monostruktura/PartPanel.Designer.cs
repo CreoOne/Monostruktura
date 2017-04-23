@@ -32,6 +32,7 @@
             this.bCore = new System.Windows.Forms.Button();
             this.bParent = new System.Windows.Forms.Button();
             this.pControls = new System.Windows.Forms.Panel();
+            this.pChilds = new System.Windows.Forms.Panel();
             this.pManage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,16 +72,25 @@
             // 
             this.pControls.AutoScroll = true;
             this.pControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pControls.Location = new System.Drawing.Point(0, 30);
+            this.pControls.Location = new System.Drawing.Point(0, 77);
             this.pControls.Name = "pControls";
-            this.pControls.Size = new System.Drawing.Size(279, 283);
+            this.pControls.Size = new System.Drawing.Size(279, 236);
             this.pControls.TabIndex = 1;
+            // 
+            // pChilds
+            // 
+            this.pChilds.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pChilds.Location = new System.Drawing.Point(0, 30);
+            this.pChilds.Name = "pChilds";
+            this.pChilds.Size = new System.Drawing.Size(279, 47);
+            this.pChilds.TabIndex = 2;
             // 
             // PartPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pControls);
+            this.Controls.Add(this.pChilds);
             this.Controls.Add(this.pManage);
             this.Name = "PartPanel";
             this.Size = new System.Drawing.Size(279, 313);
@@ -95,5 +105,6 @@
         private System.Windows.Forms.Button bCore;
         private System.Windows.Forms.Button bParent;
         private System.Windows.Forms.Panel pControls;
+        private System.Windows.Forms.Panel pChilds;
     }
 }
