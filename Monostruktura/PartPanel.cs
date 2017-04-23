@@ -24,10 +24,12 @@ namespace Monostruktura
 
             if (Part == null)
             {
+                lName.Text = string.Empty;
                 pControls.Controls.Clear();
                 return;
             }
 
+            lName.Text = Part.GetType().Name;
             Control control = Part.CreatePanel();
 
             if (control != null)
