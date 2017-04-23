@@ -34,7 +34,6 @@
             this.tbSpace = new System.Windows.Forms.TrackBar();
             this.lDirection = new System.Windows.Forms.Label();
             this.tbDirection = new System.Windows.Forms.TrackBar();
-            this.lName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tbCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
@@ -43,7 +42,7 @@
             // lCount
             // 
             this.lCount.AutoSize = true;
-            this.lCount.Location = new System.Drawing.Point(3, 16);
+            this.lCount.Location = new System.Drawing.Point(3, 0);
             this.lCount.Name = "lCount";
             this.lCount.Size = new System.Drawing.Size(35, 13);
             this.lCount.TabIndex = 0;
@@ -53,7 +52,7 @@
             // 
             this.tbCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbCount.Location = new System.Drawing.Point(3, 32);
+            this.tbCount.Location = new System.Drawing.Point(3, 16);
             this.tbCount.Maximum = 16;
             this.tbCount.Minimum = 2;
             this.tbCount.Name = "tbCount";
@@ -65,7 +64,7 @@
             // lSpace
             // 
             this.lSpace.AutoSize = true;
-            this.lSpace.Location = new System.Drawing.Point(3, 80);
+            this.lSpace.Location = new System.Drawing.Point(3, 64);
             this.lSpace.Name = "lSpace";
             this.lSpace.Size = new System.Drawing.Size(38, 13);
             this.lSpace.TabIndex = 2;
@@ -75,7 +74,7 @@
             // 
             this.tbSpace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSpace.Location = new System.Drawing.Point(3, 96);
+            this.tbSpace.Location = new System.Drawing.Point(3, 80);
             this.tbSpace.Maximum = 80;
             this.tbSpace.Minimum = 10;
             this.tbSpace.Name = "tbSpace";
@@ -87,7 +86,7 @@
             // lDirection
             // 
             this.lDirection.AutoSize = true;
-            this.lDirection.Location = new System.Drawing.Point(3, 144);
+            this.lDirection.Location = new System.Drawing.Point(3, 128);
             this.lDirection.Name = "lDirection";
             this.lDirection.Size = new System.Drawing.Size(49, 13);
             this.lDirection.TabIndex = 4;
@@ -97,7 +96,7 @@
             // 
             this.tbDirection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDirection.Location = new System.Drawing.Point(3, 160);
+            this.tbDirection.Location = new System.Drawing.Point(3, 144);
             this.tbDirection.Minimum = -10;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(144, 45);
@@ -105,23 +104,10 @@
             this.tbDirection.Value = 10;
             this.tbDirection.Scroll += new System.EventHandler(this.tbDirection_Scroll);
             // 
-            // lName
-            // 
-            this.lName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lName.Location = new System.Drawing.Point(3, 0);
-            this.lName.Name = "lName";
-            this.lName.Size = new System.Drawing.Size(144, 16);
-            this.lName.TabIndex = 9;
-            this.lName.Text = "Repeater";
-            this.lName.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // RepeaterPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lName);
             this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.lDirection);
             this.Controls.Add(this.tbSpace);
@@ -146,6 +132,5 @@
         private System.Windows.Forms.TrackBar tbSpace;
         private System.Windows.Forms.Label lDirection;
         private System.Windows.Forms.TrackBar tbDirection;
-        private System.Windows.Forms.Label lName;
     }
 }
