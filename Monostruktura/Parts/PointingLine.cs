@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
+using System.Windows.Forms;
 using Monostruktura.PartsFactory;
+using Monostruktura.Panels;
 
 namespace Monostruktura.Parts
 {
@@ -18,10 +20,10 @@ namespace Monostruktura.Parts
             }
         }
 
-        public float Direction { get; private set; }
-        public float Length { get; private set; }
-        public int Width { get; private set; }
-        public bool Negative { get; private set; }
+        public float Direction { get; set; }
+        public int Length { get; set; }
+        public int Width { get; set; }
+        public bool Negative { get; set; }
         public Color BaseColor { get; private set; }
 
         private IPart Child { get; set; }
@@ -66,6 +68,11 @@ namespace Monostruktura.Parts
             Length = rand.Next(3, 100);
             Width = rand.Next(1, 4);
             Negative = rand.Next(0, 3) == 0;
+        }
+
+        public override Control CreatePanel()
+        {
+            return new PointingLiniePanel(this);
         }
     }
 }

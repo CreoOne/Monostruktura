@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Paletter\IPaletteProvider.cs" />
     <Compile Include="Paletter\MonoPaletteSlow.cs" />
+    <Compile Include="Panels\PointingLiniePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PointingLiniePanel.Designer.cs">
+      <DependentUpon>PointingLiniePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Panels\PointingLiniePanel.resx">
+      <DependentUpon>PointingLiniePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PartPanel.resx">
       <DependentUpon>PartPanel.cs</DependentUpon>
     </EmbeddedResource>

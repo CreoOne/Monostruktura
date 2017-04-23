@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Monostruktura.PartsFactory;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Monostruktura.Parts
 {
@@ -39,6 +40,11 @@ namespace Monostruktura.Parts
         public override void Randomize(Random rand)
         {
             Count = rand.Next(2, 7);
+        }
+
+        public override Control CreatePanel()
+        {
+            return null;
         }
     }
 }

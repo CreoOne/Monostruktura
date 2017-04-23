@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Monostruktura.PartsFactory;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Monostruktura.Parts
 {
@@ -44,6 +45,11 @@ namespace Monostruktura.Parts
             Count = rand.Next(2, 16);
             Space = rand.Next(10, 80);
             Direction = (rand.NextDouble() - 0.5f) * 0.5f;
+        }
+
+        public override Control CreatePanel()
+        {
+            return null;
         }
     }
 }

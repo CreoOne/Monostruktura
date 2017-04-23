@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Numerics;
 using Monostruktura.PartsFactory;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Monostruktura.Parts
 {
@@ -68,6 +69,11 @@ namespace Monostruktura.Parts
 
             OpeningAngle = rand.Next(0, 360);
             ClosingAngle = rand.Next(0, 360);
+        }
+
+        public override Control CreatePanel()
+        {
+            return null;
         }
     }
 }

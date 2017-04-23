@@ -27,6 +27,24 @@ namespace Monostruktura
             Part = part;
             UpdateControlsEnable();
             UpdateChildsControls();
+
+            if (Part == null)
+            {
+                pControls.Controls.Clear();
+                return;
+            }
+
+            Control control = Part.CreatePanel();
+
+            if (control != null)
+            {
+                control.Dock = DockStyle.Fill;
+                pControls.Controls.Add(control);
+            }
+
+            else
+                pControls.Controls.Clear();
+
         }
 
         public void SetCore(IPart core)
