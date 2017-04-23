@@ -31,14 +31,7 @@ namespace Monostruktura
 
         private void StrukturaMainForm_Shown(object sender, EventArgs e)
         {
-            bRegenerate_Click(sender, e);
-        }
-
-        private void RegenerateStructure()
-        {
-            Core = new Parts.Splitter();
-            pPartPanel.SetPart(Core);
-            pPartPanel.SetCore(Core);
+            emptyToolStripMenuItem_Click(sender, e);
         }
 
         private void RedrawStructure()
@@ -60,38 +53,6 @@ namespace Monostruktura
                 pMain.Image.Dispose();
 
             pMain.Image = image;
-        }
-
-        private void bRegenerate_Click(object sender, EventArgs e)
-        {
-            RegenerateStructure();
-            RedrawStructure();
-        }
-
-        private void bSave_Click(object sender, EventArgs e)
-        {
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.CheckFileExists = false;
-                sfd.CheckPathExists = false;
-                sfd.OverwritePrompt = true;
-                sfd.Filter = "JPEG Image|*.jpeg|PNG Image|*.png";
-                sfd.FilterIndex = 2; // default
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    ImageFormat imageFormat;
-
-                    switch(sfd.FilterIndex)
-                    {
-                        default:
-                        case 1: imageFormat = ImageFormat.Jpeg; break;
-                        case 2: imageFormat = ImageFormat.Png; break;
-                    }
-
-                    pMain.Image.Save(sfd.FileName, imageFormat);
-                }
-            }
         }
 
         private void bRedraw_Click(object sender, EventArgs e)
@@ -134,6 +95,51 @@ namespace Monostruktura
 
             else
                 cPreset.SelectedIndex = 0;
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.CheckFileExists = false;
+                sfd.CheckPathExists = false;
+                sfd.OverwritePrompt = true;
+                sfd.Filter = "JPEG Image|*.jpeg|PNG Image|*.png";
+                sfd.FilterIndex = 2; // default
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ImageFormat imageFormat;
+
+                    switch (sfd.FilterIndex)
+                    {
+                        default:
+                        case 1: imageFormat = ImageFormat.Jpeg; break;
+                        case 2: imageFormat = ImageFormat.Png; break;
+                    }
+
+                    pMain.Image.Save(sfd.FileName, imageFormat);
+                }
+            }
+        }
+
+        private void emptyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core = new Parts.Splitter();
+            pPartPanel.SetPart(Core);
+            pPartPanel.SetCore(Core);
+
+            RedrawStructure();
+        }
+
+        private void randomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO
         }
     }
 }
