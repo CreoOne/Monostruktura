@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Numerics;
-using Monostruktura.PartsFactory;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -28,12 +27,6 @@ namespace Monostruktura.Parts
 
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
-
-        public Circle(IPartFactory factory, IPart parent)
-        {
-            Parent = parent;
-            Child = factory.Create(this);
-        }
 
         public override void Draw(Graphics context, Vector2 position, float direction)
         {
@@ -77,6 +70,7 @@ namespace Monostruktura.Parts
         public override void SetChild(IPart child, int slot)
         {
             Child = child;
+            Child.Parent = this;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Monostruktura.Parts
 {
     public interface IPart
     {
-        IPart Parent { get; }
+        IPart Parent { get; set; }
         IEnumerable<IPart> Childs { get; }
         void SetChild(IPart child, int slot);
 

@@ -8,7 +8,7 @@ namespace Monostruktura.Parts
 {
     public abstract class PartAbstract : IPart
     {
-        public IPart Parent { get; protected set; }
+        public IPart Parent { get; set; }
         public abstract IEnumerable<IPart> Childs { get; }
         public abstract void SetChild(IPart child, int slot);
 

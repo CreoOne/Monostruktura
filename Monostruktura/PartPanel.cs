@@ -124,7 +124,11 @@ namespace Monostruktura
 
             btn.Click += (sender, eventArgs) =>
             {
-                
+                using (PartCreator creator = new PartCreator())
+                    if (creator.ShowDialog() == DialogResult.OK && creator.Chosen != null)
+                        Part.SetChild(creator.Chosen, childIndex);
+
+                UpdateChildsControls();
             };
 
             return btn;

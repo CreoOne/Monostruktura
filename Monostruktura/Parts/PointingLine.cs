@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
-using Monostruktura.PartsFactory;
 using Monostruktura.Panels;
 
 namespace Monostruktura.Parts
@@ -24,32 +23,24 @@ namespace Monostruktura.Parts
         public int Length { get; set; }
         public int Width { get; set; }
         public bool Negative { get; set; }
-        public Color BaseColor { get; private set; }
 
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
-
-        public PointingLine(IPartFactory factory, IPart parent)
-        {
-            if (factory == null)
-                throw new ArgumentNullException("factory");
-
-            if (Width == 1 && Length > 60)
-                BaseColor = Palette.ForegroundHelper;
-
-            else
-                BaseColor = Negative ? Palette.Background : Palette.ForegroundMain;
-
-            Parent = parent;
-            Child = factory.Create(this);
-        }
 
         public override void Draw(Graphics context, Vector2 position, float direction)
         {
             float pointing = direction + Direction;
             Vector2 destination = position + new Vector2((float)Math.Cos(pointing) * Length, (float)Math.Sin(pointing) * Length);
 
-            using (Pen pen = new Pen(BaseColor))
+            Color color;
+
+            if (Width == 1 && Length > 60)
+                color = Palette.ForegroundHelper;
+
+            else
+                color = Negative ? Palette.Background : Palette.ForegroundMain;
+
+            using (Pen pen = new Pen(color))
             {
                 pen.Width = Width;
                 context.DrawLine(pen, position.ToPointF(), destination.ToPointF());
@@ -75,6 +66,7 @@ namespace Monostruktura.Parts
         public override void SetChild(IPart child, int slot)
         {
             Child = child;
+            Child.Parent = this;
         }
     }
 }

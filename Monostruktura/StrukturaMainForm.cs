@@ -5,7 +5,6 @@ using System.Drawing.Imaging;
 using System.Numerics;
 using System.Windows.Forms;
 using Monostruktura.Parts;
-using Monostruktura.PartsFactory;
 
 namespace Monostruktura
 {
@@ -37,8 +36,7 @@ namespace Monostruktura
 
         private void RegenerateStructure()
         {
-            Core = new RandomizedDepthPartFactory(5, Rand).Create(null);
-            Text = Core.Cost.ToString();
+            Core = new Parts.Splitter();
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);
         }

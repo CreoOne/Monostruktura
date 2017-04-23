@@ -65,17 +65,20 @@
     <Compile Include="Panels\RotorPanel.Designer.cs">
       <DependentUpon>RotorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartCreator.Designer.cs">
+      <DependentUpon>PartCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PartPanel.Designer.cs">
       <DependentUpon>PartPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartsFactory\RandomizedDepthPartFactory.cs" />
     <Compile Include="Parts\Circle.cs" />
     <Compile Include="Parts\IPart.cs" />
-    <Compile Include="PartsFactory\IPartFactory.cs" />
-    <Compile Include="PartsFactory\DepthPartFactory.cs" />
     <Compile Include="Parts\PartAbstract.cs" />
     <Compile Include="Parts\PointingLine.cs" />
     <Compile Include="Parts\Repeater.cs" />
@@ -102,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\RotorPanel.resx">
       <DependentUpon>RotorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartCreator.resx">
+      <DependentUpon>PartCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartPanel.resx">
       <DependentUpon>PartPanel.cs</DependentUpon>
