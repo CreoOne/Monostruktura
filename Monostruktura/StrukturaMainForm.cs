@@ -4,7 +4,6 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Numerics;
 using System.Windows.Forms;
-using Monostruktura.Paletter;
 using Monostruktura.Parts;
 using Monostruktura.PartsFactory;
 
@@ -38,8 +37,7 @@ namespace Monostruktura
 
         private void RegenerateStructure()
         {
-            IPaletteProvider palette = new MonoPaletteSlow(Rand, Color.Black);
-            Core = new RandomizedDepthPartFactory(4, Rand, palette).Create(null);
+            Core = new RandomizedDepthPartFactory(4, Rand).Create(null);
             Text = Core.Cost.ToString();
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);

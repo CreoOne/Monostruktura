@@ -23,7 +23,6 @@ namespace Monostruktura.Parts
         public int Width { get; private set; }
         public int Radius { get; private set; }
         public bool Negative { get; private set; }
-        public Color BaseColor { get; private set; }
         public int OpeningAngle { get; private set; }
         public int ClosingAngle { get; private set; }
 
@@ -32,15 +31,6 @@ namespace Monostruktura.Parts
 
         public Circle(IPartFactory factory, IPart parent)
         {
-            if (Radius <= 4 && Width >= 3)
-                BaseColor = factory.Palette.GetMaxForeground();
-
-            else if (Radius >= 60 && Width == 1)
-                BaseColor = factory.Palette.GetSupportForeground();
-
-            else
-                BaseColor = Negative ? factory.Palette.Background : factory.Palette.GetNextForeground();
-
             Parent = parent;
             Child = factory.Create(this);
         }
@@ -49,7 +39,15 @@ namespace Monostruktura.Parts
         {
             Vector2 destination = position + Offset;
 
-            using (Pen pen = new Pen(BaseColor))
+            Color color;
+
+            if (Radius >= 60 && Width == 1)
+                color = Palette.ForegroundHelper;
+
+            else
+                color = Negative ? Palette.Background : Palette.ForegroundMain;
+
+            using (Pen pen = new Pen(color))
             {
                 pen.Width = Width;
                 context.DrawArc(pen, destination.X, destination.Y, Radius * 2, Radius * 2, OpeningAngle, OpeningAngle + ClosingAngle);

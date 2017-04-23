@@ -1,5 +1,4 @@
 ﻿using System;
-using Monostruktura.Paletter;
 using Monostruktura.Parts;
 
 namespace Monostruktura.PartsFactory
@@ -8,9 +7,8 @@ namespace Monostruktura.PartsFactory
     {
         public int Depth { get; private set; }
         public Random Rand { get; private set; }
-        public IPaletteProvider Palette { get; set; }
 
-        public DepthPartFactory(int depth, Random rand, IPaletteProvider palette)
+        public DepthPartFactory(int depth, Random rand)
         {
             if (depth < 0)
                 throw new ArgumentOutOfRangeException("depth");
@@ -18,12 +16,8 @@ namespace Monostruktura.PartsFactory
             if (rand == null)
                 throw new ArgumentNullException("rand");
 
-            if (palette == null)
-                throw new ArgumentNullException("palette");
-
             Depth = depth;
             Rand = rand;
-            Palette = palette;
         }
 
         public virtual IPart Create(IPart parent)

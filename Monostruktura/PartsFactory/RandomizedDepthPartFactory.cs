@@ -1,12 +1,11 @@
 ﻿using System;
-using Monostruktura.Paletter;
 using Monostruktura.Parts;
 
 namespace Monostruktura.PartsFactory
 {
     public class RandomizedDepthPartFactory : DepthPartFactory
     {
-        public RandomizedDepthPartFactory(int depth, Random rand, IPaletteProvider palette) : base(depth, rand, palette) { }
+        public RandomizedDepthPartFactory(int depth, Random rand) : base(depth, rand) { }
 
         public override IPart Create(IPart parent)
         {

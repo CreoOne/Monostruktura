@@ -34,14 +34,11 @@ namespace Monostruktura.Parts
             if (factory == null)
                 throw new ArgumentNullException("factory");
 
-            if (Width == 3 && Length <= 4)
-                BaseColor = factory.Palette.GetMaxForeground();
-
-            else if (Width == 1 && Length > 60)
-                BaseColor = factory.Palette.GetSupportForeground();
+            if (Width == 1 && Length > 60)
+                BaseColor = Palette.ForegroundHelper;
 
             else
-                BaseColor = Negative ? factory.Palette.Background : factory.Palette.GetNextForeground();
+                BaseColor = Negative ? Palette.Background : Palette.ForegroundMain;
 
             Parent = parent;
             Child = factory.Create(this);

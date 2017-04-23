@@ -46,8 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Paletter\IPaletteProvider.cs" />
-    <Compile Include="Paletter\MonoPaletteSlow.cs" />
+    <Compile Include="Palette.cs" />
     <Compile Include="Panels\PointingLiniePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
