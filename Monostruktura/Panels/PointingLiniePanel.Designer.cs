@@ -35,6 +35,7 @@
             this.lWidth = new System.Windows.Forms.Label();
             this.tbWidth = new System.Windows.Forms.TrackBar();
             this.cbNegative = new System.Windows.Forms.CheckBox();
+            this.lName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbWidth)).BeginInit();
@@ -42,7 +43,9 @@
             // 
             // tbDirection
             // 
-            this.tbDirection.Location = new System.Drawing.Point(3, 16);
+            this.tbDirection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDirection.Location = new System.Drawing.Point(3, 32);
             this.tbDirection.Minimum = -10;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(180, 45);
@@ -52,7 +55,7 @@
             // lDirection
             // 
             this.lDirection.AutoSize = true;
-            this.lDirection.Location = new System.Drawing.Point(3, 0);
+            this.lDirection.Location = new System.Drawing.Point(3, 16);
             this.lDirection.Name = "lDirection";
             this.lDirection.Size = new System.Drawing.Size(49, 13);
             this.lDirection.TabIndex = 1;
@@ -61,7 +64,7 @@
             // lLength
             // 
             this.lLength.AutoSize = true;
-            this.lLength.Location = new System.Drawing.Point(3, 64);
+            this.lLength.Location = new System.Drawing.Point(3, 80);
             this.lLength.Name = "lLength";
             this.lLength.Size = new System.Drawing.Size(40, 13);
             this.lLength.TabIndex = 2;
@@ -69,7 +72,9 @@
             // 
             // tbLength
             // 
-            this.tbLength.Location = new System.Drawing.Point(3, 80);
+            this.tbLength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLength.Location = new System.Drawing.Point(3, 96);
             this.tbLength.Maximum = 100;
             this.tbLength.Minimum = 3;
             this.tbLength.Name = "tbLength";
@@ -81,7 +86,7 @@
             // lWidth
             // 
             this.lWidth.AutoSize = true;
-            this.lWidth.Location = new System.Drawing.Point(3, 128);
+            this.lWidth.Location = new System.Drawing.Point(3, 144);
             this.lWidth.Name = "lWidth";
             this.lWidth.Size = new System.Drawing.Size(35, 13);
             this.lWidth.TabIndex = 4;
@@ -89,7 +94,9 @@
             // 
             // tbWidth
             // 
-            this.tbWidth.Location = new System.Drawing.Point(3, 144);
+            this.tbWidth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWidth.Location = new System.Drawing.Point(3, 160);
             this.tbWidth.Maximum = 4;
             this.tbWidth.Minimum = 1;
             this.tbWidth.Name = "tbWidth";
@@ -102,7 +109,7 @@
             // 
             this.cbNegative.AutoSize = true;
             this.cbNegative.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbNegative.Location = new System.Drawing.Point(3, 195);
+            this.cbNegative.Location = new System.Drawing.Point(3, 211);
             this.cbNegative.Name = "cbNegative";
             this.cbNegative.Size = new System.Drawing.Size(69, 17);
             this.cbNegative.TabIndex = 7;
@@ -110,10 +117,23 @@
             this.cbNegative.UseVisualStyleBackColor = true;
             this.cbNegative.CheckedChanged += new System.EventHandler(this.cbNegative_CheckedChanged);
             // 
+            // lName
+            // 
+            this.lName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lName.Location = new System.Drawing.Point(3, 0);
+            this.lName.Name = "lName";
+            this.lName.Size = new System.Drawing.Size(180, 16);
+            this.lName.TabIndex = 8;
+            this.lName.Text = "PointingLine";
+            this.lName.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // PointingLiniePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lName);
             this.Controls.Add(this.cbNegative);
             this.Controls.Add(this.tbWidth);
             this.Controls.Add(this.lWidth);
@@ -140,5 +160,6 @@
         private System.Windows.Forms.Label lWidth;
         private System.Windows.Forms.TrackBar tbWidth;
         private System.Windows.Forms.CheckBox cbNegative;
+        private System.Windows.Forms.Label lName;
     }
 }
