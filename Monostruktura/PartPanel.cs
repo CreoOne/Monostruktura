@@ -81,26 +81,74 @@ namespace Monostruktura
             {
                 IPart child = Part.Childs.ElementAt(childIndex);
 
-                Button btn = new Button();
-                btn.Name = "bChild" + childIndex;
-                btn.Enabled = child != null;
-
-                if (child != null)
-                    btn.Text = "Child " + childIndex + ": " + child.GetType().Name;
-
-                btn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
-                btn.Left = 3;
-                btn.Top = 3 + 26 * childIndex;
-                btn.Width = pChilds.Width - 6;
-                btn.Height = 23;
-
-                btn.Click += (sender, eventArgs) =>
-                {
-                    SetPart(child);
-                };
-
-                pChilds.Controls.Add(btn);
+                pChilds.Controls.Add(CreateGoButton(childIndex, child));
+                pChilds.Controls.Add(CreateSetButton(childIndex, child));
+                pChilds.Controls.Add(CreateRemoveButton(childIndex, child));
             }
+        }
+
+        private Button CreateGoButton(int childIndex, IPart child)
+        {
+            Button btn = new Button();
+            btn.Name = "bChildGo" + childIndex;
+            btn.Enabled = child != null;
+
+            if (child != null)
+                btn.Text = "Child " + childIndex + ": " + child.GetType().Name;
+
+            btn.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
+            btn.Left = 3;
+            btn.Top = 3 + 26 * childIndex;
+            btn.Width = pChilds.Width - 58;
+            btn.Height = 23;
+
+            btn.Click += (sender, eventArgs) =>
+            {
+                SetPart(child);
+            };
+            
+            return btn;
+        }
+
+        private Button CreateSetButton(int childIndex, IPart child)
+        {
+            Button btn = new Button();
+            btn.Name = "bChildSet" + childIndex;
+            btn.Text = "+";
+
+            btn.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+            btn.Left = pChilds.Width - 52;
+            btn.Top = 3 + 26 * childIndex;
+            btn.Width = 23;
+            btn.Height = 23;
+
+            btn.Click += (sender, eventArgs) =>
+            {
+                
+            };
+
+            return btn;
+        }
+
+        private Button CreateRemoveButton(int childIndex, IPart child)
+        {
+            Button btn = new Button();
+            btn.Name = "bChildRemove" + childIndex;
+            btn.Text = "-";
+
+            btn.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+            btn.Left = pChilds.Width - 26;
+            btn.Top = 3 + 26 * childIndex;
+            btn.Width = 23;
+            btn.Height = 23;
+
+            btn.Click += (sender, eventArgs) =>
+            {
+                Part.SetChild(null, childIndex);
+                UpdateChildsControls();
+            };
+
+            return btn;
         }
     }
 }
