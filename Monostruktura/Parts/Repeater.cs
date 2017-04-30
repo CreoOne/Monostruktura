@@ -4,43 +4,43 @@ using System.Linq;
 using System.Numerics;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Monostruktura.Panels;
+using Monostruktura.Parameters;
 
 namespace Monostruktura.Parts
 {
     public class Repeater : PartAbstract
     {
-        public override double Cost { get { return Child != null ? Child.Cost * Count : 0; } }
+        public override double Cost { get { return Child != null ? Child.Cost * Count.Value : 0; } }
 
-        public int Count { get; set; }
-        public int Space { get; set; }
-        public double Direction { get; set; }
+        public readonly FloatParameter Direction = new FloatParameter("Direction", -0.5f, 0.5f);
+        public readonly IntParameter Count = new IntParameter("Count", 2, 16);
+        public readonly IntParameter Space = new IntParameter("Space", 10, 80);
 
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public override void Draw(Graphics context, Vector2 position, float direction)
         {
-            double phi = Direction + direction + Math.PI * 0.5f;
+            double phi = Direction.Value + direction + Math.PI * 0.5f;
             Vector2 offset = new Vector2((float)Math.Cos(phi), (float)Math.Sin(phi));
 
-            foreach (int sign in Enumerable.Range(-Count / 2, Count))
+            foreach (int sign in Enumerable.Range(-Count.Value / 2, Count.Value))
             {
                 if (Child != null)
-                    Child.Draw(context, position + sign * offset * Space, direction);
+                    Child.Draw(context, position + sign * offset * Space.Value, direction);
             }
         }
 
         public override void Randomize(Random rand)
         {
-            Count = rand.Next(2, 16);
-            Space = rand.Next(10, 80);
-            Direction = (rand.NextDouble() - 0.5f) * 0.5f;
+            Direction.Value = Direction.Min + ((float)rand.NextDouble() * (Direction.Max - Direction.Min));
+            Count.Value = rand.Next(Count.Min, Count.Max);
+            Space.Value = rand.Next(Space.Min, Space.Max);
         }
 
         public override Control CreatePanel()
-        {
-            return new RepeaterPanel(this);
+        { 
+            return PanelGeneratorHelper(new IParameter[] { Direction, Count, Space });
         }
 
         public override void SetChild(IPart child, int slot)

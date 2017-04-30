@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Numerics;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Monostruktura.Parameters;
 
 namespace Monostruktura.Parts
 {
@@ -12,59 +13,63 @@ namespace Monostruktura.Parts
         {
             get
             {
-                double area = (2 * Math.PI * Radius) * Width * ((ClosingAngle - OpeningAngle) / 360);
-                double selfCost = area / 10f * (Negative ? -1 : 1);
+                double area = (2 * Math.PI * Radius.Value) * Width.Value * ((ClosingAngle.Value - OpeningAngle.Value) / 360);
+                double selfCost = area / 10f * (Negative.Value ? -1 : 1);
                 return Child != null ? Child.Cost + selfCost : selfCost;
             }
         }
 
-        public Vector2 Offset { get; private set; }
-        public int Width { get; private set; }
-        public int Radius { get; private set; }
-        public bool Negative { get; private set; }
-        public int OpeningAngle { get; private set; }
-        public int ClosingAngle { get; private set; }
+        public readonly IntParameter Width = new IntParameter("Width", 1, 4);
+        public readonly IntParameter Radius = new IntParameter("Radius", 3, 80);
+        public readonly IntParameter OffsetHorizontal = new IntParameter("Horizontal Offset", -50, 50);
+        public readonly IntParameter OffsetVertical = new IntParameter("Vertical Offset", -50, 50);
+        public readonly IntParameter OpeningAngle = new IntParameter("OpeningAngle", 0, 360);
+        public readonly IntParameter ClosingAngle = new IntParameter("ClosingAngle", 0, 360);
+        public readonly BoolParameter Negative = new BoolParameter("Negative", false);
 
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
         public override void Draw(Graphics context, Vector2 position, float direction)
         {
-            Vector2 destination = position + Offset;
+            Vector2 destination = position + new Vector2(OffsetHorizontal.Value, OffsetVertical.Value);
 
             Color color;
 
-            if (Radius >= 60 && Width == 1)
+            if (Radius.Value >= 60 && Width.Value == 1)
                 color = Palette.ForegroundHelper;
 
             else
-                color = Negative ? Palette.Background : Palette.ForegroundMain;
+                color = Negative.Value ? Palette.Background : Palette.ForegroundMain;
 
             using (Pen pen = new Pen(color))
             {
-                pen.Width = Width;
-                context.DrawArc(pen, destination.X, destination.Y, Radius * 2, Radius * 2, OpeningAngle, OpeningAngle + ClosingAngle);
+                pen.Width = Width.Value;
+                int diameter = Radius.Value * 2;
+                context.DrawArc(pen, destination.X - Radius.Value, destination.Y - Radius.Value, diameter, diameter, OpeningAngle.Value, OpeningAngle.Value + ClosingAngle.Value);
             }
 
             if (Child != null)
-                Child.Draw(context, destination, direction);
+                Child.Draw(context, position, direction);
         }
 
         public override void Randomize(Random rand)
         {
-            Negative = rand.Next(0, 3) == 0;
-            Width = rand.Next(1, 4);
-            Radius = rand.Next(3, 80);
+            Width.Value = rand.Next(Width.Min, Width.Max);
+            Radius.Value = rand.Next(Radius.Min, Radius.Max);
 
-            Offset = new Vector2(rand.Next(-20, 40), rand.Next(-20, 40));
+            OffsetHorizontal.Value = rand.Next(OffsetHorizontal.Min, OffsetHorizontal.Max);
+            OffsetVertical.Value = rand.Next(OffsetVertical.Min, OffsetVertical.Max);
 
-            OpeningAngle = rand.Next(0, 360);
-            ClosingAngle = rand.Next(0, 360);
+            OpeningAngle.Value = rand.Next(OpeningAngle.Min, OpeningAngle.Max);
+            ClosingAngle.Value = rand.Next(ClosingAngle.Min, ClosingAngle.Max);
+
+            Negative.Value = rand.Next(0, 3) == 0;
         }
 
         public override Control CreatePanel()
         {
-            return null;
+            return PanelGeneratorHelper(new IParameter[] { Width, Radius, OffsetHorizontal, OffsetVertical, OpeningAngle, ClosingAngle, Negative });
         }
 
         public override void SetChild(IPart child, int slot)
