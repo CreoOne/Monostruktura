@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.Numerics;
 using System.Windows.Forms;
 using Monostruktura.Parts;
+using System.Linq;
 
 namespace Monostruktura
 {
@@ -139,7 +140,42 @@ namespace Monostruktura
 
         private void randomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO
+            Core = buildRandomStructure(0, 6);
+            pPartPanel.SetPart(Core);
+            pPartPanel.SetCore(Core);
+
+            RedrawStructure();
+        }
+
+        private IPart buildRandomStructure(int depth, int limit)
+        {
+            IPart result = null;
+
+            switch (Rand.Next(0, 5))
+            {
+                default:
+                case 0: result = new PointingLine(); break;
+                case 1: result = new Circle(); break;
+                case 2: result = new Rotor(); break;
+                case 3: result = new Repeater(); break;
+                case 4: result = new Parts.Splitter(); break;
+            }
+
+            result.Randomize(Rand);
+
+            if (depth < limit)
+                foreach (int index in Enumerable.Range(0, result.Childs.Count()))
+                    result.SetChild(buildRandomStructure(depth + 1, limit), index);
+
+            else if (depth == limit)
+                foreach (int index in Enumerable.Range(0, result.Childs.Count()))
+                {
+                    PointingLine endline = new PointingLine();
+                    endline.Randomize(Rand);
+                    result.SetChild(endline, index);
+                }
+
+            return result;
         }
     }
 }
