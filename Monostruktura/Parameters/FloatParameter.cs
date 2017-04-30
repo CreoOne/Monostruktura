@@ -31,6 +31,11 @@ namespace Monostruktura.Parameters
             Value = value;
         }
 
+        public void Randomize(Random rand)
+        {
+            Value = Min + ((float)rand.NextDouble() * (Max - Min));
+        }
+
         public Control GetControl()
         {
             Panel result = new Panel()

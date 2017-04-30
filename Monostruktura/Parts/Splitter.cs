@@ -25,7 +25,7 @@ namespace Monostruktura.Parts
 
         public override void Randomize(Random rand)
         {
-            ChildsInternal = Enumerable.Range(0, rand.Next(1, 4)).Select(e => (IPart)null).ToList();
+            ChildsInternal = Enumerable.Range(0, rand.Next(1, 5)).Select(e => (IPart)null).ToList();
         }
 
         public override Control CreatePanel()

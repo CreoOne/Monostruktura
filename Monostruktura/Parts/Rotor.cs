@@ -30,7 +30,7 @@ namespace Monostruktura.Parts
 
         public override void Randomize(Random rand)
         {
-            Count.Value = rand.Next(Count.Min, Count.Max);
+            Count.Randomize(rand);
         }
 
         public override Control CreatePanel()

@@ -33,9 +33,9 @@ namespace Monostruktura.Parts
 
         public override void Randomize(Random rand)
         {
-            Direction.Value = Direction.Min + ((float)rand.NextDouble() * (Direction.Max - Direction.Min));
-            Count.Value = rand.Next(Count.Min, Count.Max);
-            Space.Value = rand.Next(Space.Min, Space.Max);
+            Direction.Randomize(rand);
+            Count.Randomize(rand);
+            Space.Randomize(rand);
         }
 
         public override Control CreatePanel()

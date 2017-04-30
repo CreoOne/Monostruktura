@@ -140,7 +140,7 @@ namespace Monostruktura
 
         private void randomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Core = buildRandomStructure(0, 6);
+            Core = buildRandomStructure(0, 8);
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);
 

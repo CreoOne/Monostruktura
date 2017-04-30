@@ -6,6 +6,7 @@ namespace Monostruktura.Parameters
     public interface IParameter
     {
         string Name { get; }
+        void Randomize(Random rand);
         Control GetControl();
     }
 

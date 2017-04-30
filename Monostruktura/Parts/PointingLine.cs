@@ -52,10 +52,11 @@ namespace Monostruktura.Parts
 
         public override void Randomize(Random rand)
         {
-            Direction.Value = (float)(Direction.Min + (rand.NextDouble() * (Direction.Max - Direction.Min)));
-            Length.Value = rand.Next(Length.Min, Length.Max);
-            Width.Value = rand.Next(Width.Min, Width.Max);
-            Negative.Value = rand.Next(0, 3) == 0;
+            Direction.Randomize(rand);
+            Length.Randomize(rand);
+            Width.Randomize(rand);
+
+            Negative.Value = rand.Next(0, 4) == 0;
         }
 
         public override Control CreatePanel()

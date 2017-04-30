@@ -55,16 +55,16 @@ namespace Monostruktura.Parts
 
         public override void Randomize(Random rand)
         {
-            Width.Value = rand.Next(Width.Min, Width.Max);
-            Radius.Value = rand.Next(Radius.Min, Radius.Max);
+            Width.Randomize(rand);
+            Radius.Randomize(rand);
 
-            OffsetHorizontal.Value = rand.Next(OffsetHorizontal.Min, OffsetHorizontal.Max);
-            OffsetVertical.Value = rand.Next(OffsetVertical.Min, OffsetVertical.Max);
+            OffsetHorizontal.Randomize(rand);
+            OffsetVertical.Randomize(rand);
 
-            OpeningAngle.Value = rand.Next(OpeningAngle.Min, OpeningAngle.Max);
-            ClosingAngle.Value = rand.Next(ClosingAngle.Min, ClosingAngle.Max);
+            OpeningAngle.Randomize(rand);
+            ClosingAngle.Randomize(rand);
 
-            Negative.Value = rand.Next(0, 3) == 0;
+            Negative.Value = rand.Next(0, 4) == 0;
         }
 
         public override Control CreatePanel()
