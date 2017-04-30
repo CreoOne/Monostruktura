@@ -12,7 +12,7 @@ namespace Monostruktura.Parts
     {
         public override double Cost { get { return Child != null ? Child.Cost * Count.Value : 0; } }
 
-        public readonly FloatParameter Direction = new FloatParameter("Direction", -0.5f, 0.5f);
+        public readonly FloatParameter Direction = new FloatParameter("Direction", -0.7f, 0.7f);
         public readonly IntParameter Count = new IntParameter("Count", 2, 16);
         public readonly IntParameter Space = new IntParameter("Space", 10, 80);
 

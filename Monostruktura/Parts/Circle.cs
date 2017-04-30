@@ -19,7 +19,7 @@ namespace Monostruktura.Parts
             }
         }
 
-        public readonly IntParameter Width = new IntParameter("Width", 1, 4);
+        public readonly IntParameter Width = new IntParameter("Width", 1, 3);
         public readonly IntParameter Radius = new IntParameter("Radius", 3, 80);
         public readonly IntParameter OffsetHorizontal = new IntParameter("Horizontal Offset", -50, 50);
         public readonly IntParameter OffsetVertical = new IntParameter("Vertical Offset", -50, 50);

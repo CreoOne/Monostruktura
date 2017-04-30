@@ -19,7 +19,7 @@ namespace Monostruktura.Parts
             }
         }
 
-        public readonly FloatParameter Direction = new FloatParameter("Direction", -0.5f, 0.5f);
+        public readonly FloatParameter Direction = new FloatParameter("Direction", -1.2f, 1.2f);
         public readonly IntParameter Length = new IntParameter("Length", 3, 100);
         public readonly IntParameter Width = new IntParameter("Width", 1, 4);
         public readonly BoolParameter Negative = new BoolParameter("Negative", false);
@@ -56,7 +56,7 @@ namespace Monostruktura.Parts
             Length.Randomize(rand);
             Width.Randomize(rand);
 
-            Negative.Value = rand.Next(0, 4) == 0;
+            Negative.Value = rand.Next(0, 3) == 0;
         }
 
         public override Control CreatePanel()
