@@ -14,12 +14,12 @@ namespace Monostruktura.Parts
             get
             {
                 double area = (Length.Value * Width.Value);
-                double selfCost = area / 10f /* (Negative.Value ? -1 : 1)*/;
+                double selfCost = area / 10f;
                 return Child != null ? Child.Cost + selfCost : selfCost;
             }
         }
 
-        public readonly FloatParameter Direction = new FloatParameter("Direction", -1.2f, 1.2f);
+        public readonly FloatParameter Direction = new FloatParameter("Direction", (float)Math.PI / -2f, (float)Math.PI / 2f);
         public readonly IntParameter Length = new IntParameter("Length", 3, 100);
         public readonly IntParameter Width = new IntParameter("Width", 1, 4);
         public readonly BoolParameter Negative = new BoolParameter("Negative", false);
@@ -67,7 +67,9 @@ namespace Monostruktura.Parts
         public override void SetChild(IPart child, int slot)
         {
             Child = child;
-            Child.Parent = this;
+
+            if(Child != null)
+                Child.Parent = this;
         }
     }
 }

@@ -46,7 +46,9 @@ namespace Monostruktura.Parts
         public override void SetChild(IPart child, int slot)
         {
             Child = child;
-            Child.Parent = this;
+
+            if(Child != null)
+                Child.Parent = this;
         }
     }
 }
