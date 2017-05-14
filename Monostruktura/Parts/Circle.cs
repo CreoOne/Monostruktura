@@ -14,7 +14,7 @@ namespace Monostruktura.Parts
             get
             {
                 double area = (2 * Math.PI * Radius.Value) * Width.Value * ((ClosingAngle.Value - OpeningAngle.Value) / 360);
-                double selfCost = area / 10f * (Negative.Value ? -1 : 1);
+                double selfCost = area / 10f /* (Negative.Value ? -1 : 1)*/;
                 return Child != null ? Child.Cost + selfCost : selfCost;
             }
         }

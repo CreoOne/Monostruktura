@@ -162,9 +162,12 @@ namespace Monostruktura
 
         private void randomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Core = buildRandomStructure(0, 8);
+            do { Core = buildRandomStructure(0, 8); }
+            while (Math.Abs(Core.Cost) > 4e6);
+
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);
+            Text = Core.Cost.ToString("### ### ##0.000");
 
             RedrawStructure();
         }
