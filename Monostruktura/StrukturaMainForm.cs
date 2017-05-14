@@ -6,11 +6,15 @@ using System.Numerics;
 using System.Windows.Forms;
 using Monostruktura.Parts;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Monostruktura
 {
     public partial class StrukturaMainForm : Form
     {
+        private CancellationTokenSource RedrawCancellationToken = new CancellationTokenSource();
+
         private readonly Size FACEBOOK_POST = new Size(960, 540);
         private readonly Size FACEBOOK_PROFILE = new Size(160, 160);
         private readonly Size FACEBOOK_COVER = new Size(849, 313);
@@ -35,19 +39,29 @@ namespace Monostruktura
             emptyToolStripMenuItem_Click(sender, e);
         }
 
-        private void RedrawStructure()
+        private async void RedrawStructure()
         {
             Bitmap image = new Bitmap(CanvasSize.Width, CanvasSize.Height);
+            RedrawCancellationToken.Cancel();
+            RedrawCancellationToken = new CancellationTokenSource();
 
-            using (Graphics context = Graphics.FromImage(image))
+            try
             {
-                context.PixelOffsetMode = PixelOffsetMode.None;
-                context.SmoothingMode = SmoothingMode.AntiAlias;
+                await Task.Run(() =>
+                {
+                    using (Graphics context = Graphics.FromImage(image))
+                    {
+                        context.PixelOffsetMode = PixelOffsetMode.None;
+                        context.SmoothingMode = SmoothingMode.AntiAlias;
 
-                ClearBackground(image, context);
+                        ClearBackground(image, context);
 
-                Core.Draw(context, new Vector2(image.Width / 2, image.Height / 2), 0);
+                        Core.Draw(context, new Vector2(image.Width / 2, image.Height / 2), 0);
+                    }
+                }, RedrawCancellationToken.Token);
             }
+
+            catch (TaskCanceledException) { }
 
             if (pMain.Image != null)
                 pMain.Image.Dispose();
