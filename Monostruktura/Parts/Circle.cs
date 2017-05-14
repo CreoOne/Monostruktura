@@ -14,15 +14,15 @@ namespace Monostruktura.Parts
             get
             {
                 double area = (2 * Math.PI * Radius.Value) * Width.Value * ((ClosingAngle.Value - OpeningAngle.Value) / 360);
-                double selfCost = area / 10f /* (Negative.Value ? -1 : 1)*/;
+                double selfCost = area / 10f;
                 return Child != null ? Child.Cost + selfCost : selfCost;
             }
         }
 
-        public readonly IntParameter Width = new IntParameter("Width", 1, 3);
-        public readonly IntParameter Radius = new IntParameter("Radius", 3, 80);
-        public readonly IntParameter OffsetHorizontal = new IntParameter("Horizontal Offset", -50, 50);
-        public readonly IntParameter OffsetVertical = new IntParameter("Vertical Offset", -50, 50);
+        public readonly IntParameter Width = new IntParameter("Width", 1, 4);
+        public readonly IntParameter Radius = new IntParameter("Radius", 3, 100);
+        public readonly IntParameter OffsetHorizontal = new IntParameter("Horizontal Offset", -100, 100);
+        public readonly IntParameter OffsetVertical = new IntParameter("Vertical Offset", -100, 100);
         public readonly IntParameter OpeningAngle = new IntParameter("OpeningAngle", 0, 360);
         public readonly IntParameter ClosingAngle = new IntParameter("ClosingAngle", 0, 360);
         public readonly BoolParameter Negative = new BoolParameter("Negative", false);
