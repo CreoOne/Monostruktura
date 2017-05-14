@@ -19,7 +19,7 @@ namespace Monostruktura.Parts
             }
         }
 
-        public readonly FloatParameter Direction = new FloatParameter("Direction", (float)Math.PI / -2f, (float)Math.PI / 2f);
+        public readonly FloatParameter Direction = new FloatParameter("Direction", -(float)Math.PI, (float)Math.PI);
         public readonly IntParameter Length = new IntParameter("Length", 3, 100);
         public readonly IntParameter Width = new IntParameter("Width", 1, 4);
         public readonly BoolParameter Negative = new BoolParameter("Negative", false);
