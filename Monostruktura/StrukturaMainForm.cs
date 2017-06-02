@@ -181,7 +181,7 @@ namespace Monostruktura
 
             pPartPanel.SetPart(Core);
             pPartPanel.SetCore(Core);
-            Text = Core.Cost.ToString("### ### ##0.000");
+            Text = string.Format("Cost: {0} Endpoints: {1}", Core.Cost.ToString("### ### ##0.000"), Core.Endpoints.ToString("### ### ##0"));
 
             RedrawStructure();
         }

@@ -42,6 +42,8 @@ namespace Monostruktura.Parts
 
             if(child != null)
                 child.Parent = this;
+
+            ChildsInternal = ChildsInternal.OrderByDescending(c => c == null ? 0 : c.Endpoints).ToList();
         }
 
         public void AddSlot()

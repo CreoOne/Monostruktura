@@ -14,6 +14,7 @@ namespace Monostruktura.Parts
 
         double Cost { get; }
         int Depth { get; }
+        int Endpoints { get; }
 
         void Draw(Graphics context, Vector2 position, float direction);
         void Randomize(Random rand);

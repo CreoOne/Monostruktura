@@ -15,6 +15,7 @@ namespace Monostruktura.Parts
         public abstract void SetChild(IPart child, int slot);
 
         public int Depth { get { return Parent != null ? Parent.Depth + 1 : 0; } }
+        public int Endpoints { get { return Childs.Sum(c => c == null ? 1 : c.Endpoints); } }
         public abstract double Cost { get; }
 
         public abstract void Draw(Graphics context, Vector2 position, float direction);
