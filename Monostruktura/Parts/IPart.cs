@@ -19,5 +19,6 @@ namespace Monostruktura.Parts
         void Draw(Graphics context, Vector2 position, float direction);
         void Randomize(Random rand);
         Control CreatePanel();
+        event EventHandler PanelControlsReloadRequest;
     }
 }

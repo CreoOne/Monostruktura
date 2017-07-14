@@ -39,5 +39,12 @@ namespace Monostruktura.Parts
 
             return result;
         }
+
+        protected virtual void OnPanelControlsReloadRequest(EventArgs e)
+        {
+            PanelControlsReloadRequest?.Invoke(this, e);
+        }
+
+        public event EventHandler PanelControlsReloadRequest;
     }
 }

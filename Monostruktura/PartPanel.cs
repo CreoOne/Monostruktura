@@ -18,6 +18,9 @@ namespace Monostruktura
 
         public void SetPart(IPart part)
         {
+            if (Part != null)
+                Part.PanelControlsReloadRequest -= Part_PanelControlsReloadRequest;
+
             Part = part;
             UpdateControlsEnable();
             UpdateChildsControls();
@@ -31,6 +34,7 @@ namespace Monostruktura
 
             lName.Text = Part.GetType().Name;
             Control control = Part.CreatePanel();
+            Part.PanelControlsReloadRequest += Part_PanelControlsReloadRequest;
 
             if (control != null)
             {
@@ -41,6 +45,11 @@ namespace Monostruktura
             else
                 pControls.Controls.Clear();
 
+        }
+
+        private void Part_PanelControlsReloadRequest(object sender, EventArgs e)
+        {
+            SetPart(Part);
         }
 
         public void SetCore(IPart core)

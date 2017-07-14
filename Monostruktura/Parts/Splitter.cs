@@ -49,12 +49,16 @@ namespace Monostruktura.Parts
         public void AddSlot()
         {
             ChildsInternal.Add(null);
+
+            OnPanelControlsReloadRequest(EventArgs.Empty);
         }
 
         public void RemoveSlot()
         {
             if(ChildsInternal.Count > 1)
                 ChildsInternal = ChildsInternal.Take(ChildsInternal.Count - 1).ToList();
+
+            OnPanelControlsReloadRequest(EventArgs.Empty);
         }
     }
 }
