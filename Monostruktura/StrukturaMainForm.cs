@@ -54,9 +54,9 @@ namespace Monostruktura
                         context.PixelOffsetMode = PixelOffsetMode.None;
                         context.SmoothingMode = SmoothingMode.AntiAlias;
 
-                        ClearBackground(image, context);
-
+                        ClearBackground(context);
                         Core.Draw(context, new Vector2(image.Width / 2, image.Height / 2), 0);
+                        DrawVignette(image, context);
                     }
                 }, RedrawCancellationToken.Token);
             }
@@ -69,13 +69,13 @@ namespace Monostruktura
             pMain.Image = image;
         }
 
-        private static void ClearBackground(Bitmap image, Graphics context)
+        private static void ClearBackground(Graphics context)
         {
-            Color shade = Color.FromArgb(234, 234, 238);
+            context.Clear(Palette.Background);
+        }
 
-            using (SolidBrush brush = new SolidBrush(shade))
-                context.FillRectangle(brush, 0, 0, image.Width, image.Height);
-
+        private static void DrawVignette(Bitmap image, Graphics context)
+        {
             using (GraphicsPath graphicsPath = new GraphicsPath())
             {
                 graphicsPath.AddEllipse(-image.Width / 4f, -image.Height / 4f, image.Width * 1.5f, image.Height * 1.5f);
@@ -83,8 +83,8 @@ namespace Monostruktura
                 using (PathGradientBrush pathGradientBrush = new PathGradientBrush(graphicsPath))
                 {
                     pathGradientBrush.CenterPoint = new PointF(image.Width / 2, image.Height / 2);
-                    pathGradientBrush.CenterColor = Palette.Background;
-                    pathGradientBrush.SurroundColors = new Color[] { shade };
+                    pathGradientBrush.CenterColor = Color.FromArgb(0, Color.Black);
+                    pathGradientBrush.SurroundColors = new Color[] { Palette.Vignette };
                     pathGradientBrush.FocusScales = new PointF(0.6f, 0.6f);
 
                     context.FillPath(pathGradientBrush, graphicsPath);
