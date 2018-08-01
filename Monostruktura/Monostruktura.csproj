@@ -63,12 +63,6 @@
     <Compile Include="PartCreator.Designer.cs">
       <DependentUpon>PartCreator.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PartPanel.Designer.cs">
-      <DependentUpon>PartPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Parts\Circle.cs" />
     <Compile Include="Parts\IPart.cs" />
     <Compile Include="Parts\PartAbstract.cs" />
@@ -94,9 +88,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PartCreator.resx">
       <DependentUpon>PartCreator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PartPanel.resx">
-      <DependentUpon>PartPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StrukturaMainForm.resx">
       <DependentUpon>StrukturaMainForm.cs</DependentUpon>

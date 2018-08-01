@@ -32,20 +32,19 @@
             this.nWidth = new System.Windows.Forms.NumericUpDown();
             this.nHeight = new System.Windows.Forms.NumericUpDown();
             this.bRedraw = new System.Windows.Forms.Button();
-            this.cPreset = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.structureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.randomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pPartPanel = new Monostruktura.PartPanel();
+            this.nDpi = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nHeight)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nDpi)).BeginInit();
             this.SuspendLayout();
             // 
             // pMain
@@ -53,9 +52,9 @@
             this.pMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pMain.Location = new System.Drawing.Point(226, 56);
+            this.pMain.Location = new System.Drawing.Point(12, 56);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(611, 450);
+            this.pMain.Size = new System.Drawing.Size(825, 450);
             this.pMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pMain.TabIndex = 0;
             this.pMain.TabStop = false;
@@ -78,7 +77,7 @@
             this.nWidth.Size = new System.Drawing.Size(86, 20);
             this.nWidth.TabIndex = 3;
             this.nWidth.Value = new decimal(new int[] {
-            1,
+            2480,
             0,
             0,
             0});
@@ -102,7 +101,7 @@
             this.nHeight.Size = new System.Drawing.Size(86, 20);
             this.nHeight.TabIndex = 4;
             this.nHeight.Value = new decimal(new int[] {
-            1,
+            3508,
             0,
             0,
             0});
@@ -111,28 +110,13 @@
             // bRedraw
             // 
             this.bRedraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bRedraw.Location = new System.Drawing.Point(762, 27);
+            this.bRedraw.Location = new System.Drawing.Point(762, 30);
             this.bRedraw.Name = "bRedraw";
-            this.bRedraw.Size = new System.Drawing.Size(75, 23);
+            this.bRedraw.Size = new System.Drawing.Size(75, 20);
             this.bRedraw.TabIndex = 5;
             this.bRedraw.Text = "Redraw";
             this.bRedraw.UseVisualStyleBackColor = true;
             this.bRedraw.Click += new System.EventHandler(this.bRedraw_Click);
-            // 
-            // cPreset
-            // 
-            this.cPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cPreset.FormattingEnabled = true;
-            this.cPreset.Items.AddRange(new object[] {
-            "Custom",
-            "Facebook Post",
-            "Facebook Profile",
-            "Facebook Cover"});
-            this.cPreset.Location = new System.Drawing.Point(451, 29);
-            this.cPreset.Name = "cPreset";
-            this.cPreset.Size = new System.Drawing.Size(121, 21);
-            this.cPreset.TabIndex = 6;
-            this.cPreset.SelectedIndexChanged += new System.EventHandler(this.cPreset_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -158,25 +142,16 @@
             // generateToolStripMenuItem
             // 
             this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emptyToolStripMenuItem,
             this.randomToolStripMenuItem});
             this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
-            this.generateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.generateToolStripMenuItem.Text = "Generate";
-            // 
-            // emptyToolStripMenuItem
-            // 
-            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
-            this.emptyToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.emptyToolStripMenuItem.Text = "Empty";
-            this.emptyToolStripMenuItem.Click += new System.EventHandler(this.emptyToolStripMenuItem_Click);
             // 
             // randomToolStripMenuItem
             // 
             this.randomToolStripMenuItem.Name = "randomToolStripMenuItem";
             this.randomToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.randomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.randomToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.randomToolStripMenuItem.Text = "Random";
             this.randomToolStripMenuItem.Click += new System.EventHandler(this.randomToolStripMenuItem_Click);
             // 
@@ -184,39 +159,52 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
-            // pPartPanel
+            // nDpi
             // 
-            this.pPartPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pPartPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pPartPanel.Location = new System.Drawing.Point(12, 56);
-            this.pPartPanel.Name = "pPartPanel";
-            this.pPartPanel.Size = new System.Drawing.Size(208, 450);
-            this.pPartPanel.TabIndex = 7;
+            this.nDpi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nDpi.Location = new System.Drawing.Point(486, 30);
+            this.nDpi.Maximum = new decimal(new int[] {
+            32000,
+            0,
+            0,
+            0});
+            this.nDpi.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nDpi.Name = "nDpi";
+            this.nDpi.Size = new System.Drawing.Size(86, 20);
+            this.nDpi.TabIndex = 9;
+            this.nDpi.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             // 
             // StrukturaMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(849, 518);
-            this.Controls.Add(this.pPartPanel);
-            this.Controls.Add(this.cPreset);
+            this.Controls.Add(this.nDpi);
             this.Controls.Add(this.bRedraw);
             this.Controls.Add(this.nHeight);
             this.Controls.Add(this.nWidth);
@@ -226,12 +214,12 @@
             this.Name = "StrukturaMainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StrukturaMainForm_Load);
-            this.Shown += new System.EventHandler(this.StrukturaMainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nHeight)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nDpi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,15 +231,13 @@
         private System.Windows.Forms.NumericUpDown nWidth;
         private System.Windows.Forms.NumericUpDown nHeight;
         private System.Windows.Forms.Button bRedraw;
-        private System.Windows.Forms.ComboBox cPreset;
-        private PartPanel pPartPanel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem structureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem emptyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem randomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown nDpi;
     }
 }
