@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Monostruktura.Parameters
 {
@@ -34,43 +33,6 @@ namespace Monostruktura.Parameters
         public void Randomize(Random rand)
         {
             Value = Min + ((float)rand.NextDouble() * (Max - Min));
-        }
-
-        public Control GetControl()
-        {
-            Panel result = new Panel()
-            {
-                Width = 100
-            };
-
-            Label label = new Label()
-            {
-                Left = 3,
-                Top = 3,
-                Text = Name
-            };
-
-            TrackBar trackBar = new TrackBar()
-            {
-                Minimum = (int)(Min * 1000),
-                Maximum = (int)(Max * 1000),
-                Value = (int)(Value * 1000),
-                Left = 3,
-                Top = label.Height + 3,
-                Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
-                Width = result.Width - 6,
-            };
-
-            trackBar.ValueChanged += delegate
-            {
-                Value = trackBar.Value / 1000f;
-            };
-
-            result.Height = label.Height + trackBar.Height;
-            result.Controls.Add(label);
-            result.Controls.Add(trackBar);
-
-            return result;
         }
     }
 }

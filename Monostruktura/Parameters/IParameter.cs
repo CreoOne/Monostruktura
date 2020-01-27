@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Monostruktura.Parameters
 {
@@ -7,7 +6,6 @@ namespace Monostruktura.Parameters
     {
         string Name { get; }
         void Randomize(Random rand);
-        Control GetControl();
     }
 
     public interface IParameter<T> : IParameter

@@ -47,22 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Palette.cs" />
-    <Compile Include="Panels\SplitterPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panels\SplitterPanel.Designer.cs">
-      <DependentUpon>SplitterPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Parameters\BoolParameter.cs" />
     <Compile Include="Parameters\FloatParameter.cs" />
     <Compile Include="Parameters\IParameter.cs" />
     <Compile Include="Parameters\IntParameter.cs" />
-    <Compile Include="PartCreator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PartCreator.Designer.cs">
-      <DependentUpon>PartCreator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Parts\Circle.cs" />
     <Compile Include="Parts\IPart.cs" />
     <Compile Include="Parts\PartAbstract.cs" />
@@ -83,12 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Panels\SplitterPanel.resx">
-      <DependentUpon>SplitterPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PartCreator.resx">
-      <DependentUpon>PartCreator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StrukturaMainForm.resx">
       <DependentUpon>StrukturaMainForm.cs</DependentUpon>
     </EmbeddedResource>

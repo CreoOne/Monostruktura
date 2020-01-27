@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Monostruktura.Parameters
 {
@@ -32,35 +31,6 @@ namespace Monostruktura.Parameters
         public void Randomize(Random rand)
         {
             Value = rand.Next(0, 2) == 0;
-        }
-
-        public Control GetControl()
-        {
-            Panel result = new Panel()
-            {
-                Width = 100
-            };
-
-            CheckBox checkBox = new CheckBox()
-            {
-                CheckAlign = System.Drawing.ContentAlignment.MiddleRight,
-                Checked = Value,
-                Text = Name,
-                Left = 3,
-                Top = 3,
-                Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
-                Width = result.Width - 6,
-            };
-
-            checkBox.CheckedChanged += delegate
-            {
-                Value = checkBox.Checked;
-            };
-
-            result.Height = checkBox.Height + 3;
-            result.Controls.Add(checkBox);
-
-            return result;
         }
     }
 }

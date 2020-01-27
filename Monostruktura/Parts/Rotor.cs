@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using Monostruktura.Parameters;
 
 namespace Monostruktura.Parts
@@ -31,11 +30,6 @@ namespace Monostruktura.Parts
         public override void Randomize(Random rand)
         {
             Count.Randomize(rand);
-        }
-
-        public override Control CreatePanel()
-        {
-            return PanelGeneratorHelper(new IParameter[] { Count });
         }
 
         public override void SetChild(IPart child, int slot)

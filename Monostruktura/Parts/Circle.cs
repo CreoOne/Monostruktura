@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Numerics;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using Monostruktura.Parameters;
 
 namespace Monostruktura.Parts
@@ -67,11 +66,6 @@ namespace Monostruktura.Parts
             ClosingAngle.Randomize(rand);
 
             Negative.Value = rand.Next(0, 4) == 0;
-        }
-
-        public override Control CreatePanel()
-        {
-            return PanelGeneratorHelper(new IParameter[] { Width, Radius, OffsetHorizontal, OffsetVertical, OpeningAngle, ClosingAngle, Negative });
         }
 
         public override void SetChild(IPart child, int slot)

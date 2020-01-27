@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using System.Windows.Forms;
 
 namespace Monostruktura.Parts
 {
@@ -28,11 +27,6 @@ namespace Monostruktura.Parts
             ChildsInternal = Enumerable.Range(0, rand.Next(1, 5)).Select(e => (IPart)null).ToList();
         }
 
-        public override Control CreatePanel()
-        {
-            return new Panels.SplitterPanel(this);
-        }
-
         public override void SetChild(IPart child, int slot)
         {
             if (slot < 0 && slot >= ChildsInternal.Count - 1)
@@ -49,16 +43,12 @@ namespace Monostruktura.Parts
         public void AddSlot()
         {
             ChildsInternal.Add(null);
-
-            OnPanelControlsReloadRequest(EventArgs.Empty);
         }
 
         public void RemoveSlot()
         {
             if(ChildsInternal.Count > 1)
                 ChildsInternal = ChildsInternal.Take(ChildsInternal.Count - 1).ToList();
-
-            OnPanelControlsReloadRequest(EventArgs.Empty);
         }
     }
 }

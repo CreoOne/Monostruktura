@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
-using System.Windows.Forms;
 using Monostruktura.Parameters;
 
 namespace Monostruktura.Parts
@@ -57,11 +56,6 @@ namespace Monostruktura.Parts
             Width.Randomize(rand);
 
             Negative.Value = rand.Next(0, 3) == 0;
-        }
-
-        public override Control CreatePanel()
-        {
-            return PanelGeneratorHelper(new IParameter[] { Direction, Length, Width, Negative });
         }
 
         public override void SetChild(IPart child, int slot)
