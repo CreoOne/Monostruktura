@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Collections.Generic;
 using Monostruktura.Parameters;
+using System.Threading;
 
 namespace Monostruktura.Parts
 {
@@ -18,15 +19,18 @@ namespace Monostruktura.Parts
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
-        public override void Draw(Graphics context, Vector2 position, float direction)
+        public override void Draw(Graphics context, Vector2 position, float direction, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+                return;
+
             double phi = Direction.Value + direction + Math.PI * 0.5f;
             Vector2 offset = new Vector2((float)Math.Cos(phi), (float)Math.Sin(phi));
 
             foreach (int sign in Enumerable.Range(-Count.Value / 2, Count.Value))
             {
                 if (Child != null)
-                    Child.Draw(context, position + sign * offset * Space.Value, direction);
+                    Child.Draw(context, position + sign * offset * Space.Value, direction, cancellationToken);
             }
         }
 

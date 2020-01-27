@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 
 namespace Monostruktura.Parts
 {
@@ -13,13 +14,13 @@ namespace Monostruktura.Parts
         private List<IPart> ChildsInternal = new List<IPart> { null };
         public override IEnumerable<IPart> Childs { get { return ChildsInternal; } }
 
-        public override void Draw(Graphics context, Vector2 position, float direction)
+        public override void Draw(Graphics context, Vector2 position, float direction, CancellationToken cancellationToken)
         {
             float offset = (float)Math.PI / ChildsInternal.Count;
 
             foreach (int index in Enumerable.Range(0, ChildsInternal.Count))
                 if(ChildsInternal[index] != null)
-                    ChildsInternal[index].Draw(context, position, direction - (float)Math.PI + offset * index);
+                    ChildsInternal[index].Draw(context, position, direction - (float)Math.PI + offset * index, cancellationToken);
         }
 
         public override void Randomize(Random rand)

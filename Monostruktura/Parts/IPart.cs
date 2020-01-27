@@ -2,6 +2,7 @@
 using System.Numerics;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Monostruktura.Parts
 {
@@ -15,7 +16,7 @@ namespace Monostruktura.Parts
         int Depth { get; }
         int Endpoints { get; }
 
-        void Draw(Graphics context, Vector2 position, float direction);
+        void Draw(Graphics context, Vector2 position, float direction, CancellationToken cancellationToken);
         void Randomize(Random rand);
     }
 }

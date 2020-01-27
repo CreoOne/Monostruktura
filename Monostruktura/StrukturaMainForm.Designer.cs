@@ -213,7 +213,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StrukturaMainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.StrukturaMainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nHeight)).EndInit();

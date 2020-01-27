@@ -3,6 +3,7 @@ using System.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Monostruktura.Parts
 {
@@ -16,7 +17,7 @@ namespace Monostruktura.Parts
         public int Endpoints { get { return Childs.Sum(c => c == null ? 1 : c.Endpoints); } }
         public abstract double Cost { get; }
 
-        public abstract void Draw(Graphics context, Vector2 position, float direction);
+        public abstract void Draw(Graphics context, Vector2 position, float direction, CancellationToken cancellationToken);
         public abstract void Randomize(Random rand);
     }
 }

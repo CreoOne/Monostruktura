@@ -13,7 +13,7 @@ namespace Monostruktura
 {
     public partial class StrukturaMainForm : Form
     {
-        private CancellationTokenSource RedrawCancellationToken = new CancellationTokenSource();
+        private CancellationTokenSource RedrawCancellationTokenSource = new CancellationTokenSource();
 
         private IPart Core;
         private Random Rand;
@@ -23,42 +23,50 @@ namespace Monostruktura
         {
             InitializeComponent();
             nWidth_nHeight_Leave(this, EventArgs.Empty);
+            Rand = new Random(DateTime.UtcNow.Millisecond);
         }
 
-        private void StrukturaMainForm_Load(object sender, EventArgs e)
-        {
-            Rand = new Random((int)((DateTime.Now - DateTime.MinValue).TotalMilliseconds % int.MaxValue));
-        }
-
-        private async void RedrawStructure()
+        private void RedrawStructure()
         {
             Bitmap image = new Bitmap(CanvasSize.Width, CanvasSize.Height);
             image.SetResolution((int)nDpi.Value, (int)nDpi.Value);
-            RedrawCancellationToken.Cancel();
-            RedrawCancellationToken = new CancellationTokenSource();
+            RedrawCancellationTokenSource.Cancel();
+            RedrawCancellationTokenSource.Dispose();
+            RedrawCancellationTokenSource = new CancellationTokenSource();
+            CancellationToken redrawCancellationToken = RedrawCancellationTokenSource.Token;
 
             try
             {
-                await Task.Run(() =>
+                Task.Factory.StartNew(() =>
                 {
-                    using (Graphics context = Graphics.FromImage(image))
+                    try
                     {
-                        context.PixelOffsetMode = PixelOffsetMode.None;
-                        context.SmoothingMode = SmoothingMode.AntiAlias;
+                        using (Graphics context = Graphics.FromImage(image))
+                        {
+                            context.PixelOffsetMode = PixelOffsetMode.None;
+                            context.SmoothingMode = SmoothingMode.AntiAlias;
 
-                        ClearBackground(context);
-                        Core.Draw(context, new Vector2(image.Width / 2, image.Height / 2), 0);
-                        DrawVignette(image, context);
+                            ClearBackground(context);
+                            Core.Draw(context, new Vector2(image.Width / 2, image.Height / 2), 0, redrawCancellationToken);
+                            DrawVignette(image, context);
+                        }
                     }
-                }, RedrawCancellationToken.Token);
+
+                    catch (ArgumentException) { }
+
+                }, redrawCancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Current).ConfigureAwait(false);
             }
 
             catch (TaskCanceledException) { }
 
-            if (pMain.Image != null)
-                pMain.Image.Dispose();
+            if (!redrawCancellationToken.IsCancellationRequested)
+                BeginInvoke((Action)delegate
+                {
+                    if (pMain.Image != null)
+                        pMain.Image.Dispose();
 
-            pMain.Image = image;
+                    pMain.Image = image;
+                });
         }
 
         private static void ClearBackground(Graphics context)

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Numerics;
 using System.Collections.Generic;
 using Monostruktura.Parameters;
+using System.Threading;
 
 namespace Monostruktura.Parts
 {
@@ -31,8 +32,11 @@ namespace Monostruktura.Parts
         private IPart Child { get; set; }
         public override IEnumerable<IPart> Childs { get { yield return Child; } }
 
-        public override void Draw(Graphics context, Vector2 position, float direction)
+        public override void Draw(Graphics context, Vector2 position, float direction, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+                return;
+
             Vector2 destination = position + new Vector2(OffsetHorizontal.Value, OffsetVertical.Value);
 
             Color color;
@@ -51,7 +55,7 @@ namespace Monostruktura.Parts
             }
 
             if (Child != null)
-                Child.Draw(context, position, direction);
+                Child.Draw(context, position, direction, cancellationToken);
         }
 
         public override void Randomize(Random rand)
